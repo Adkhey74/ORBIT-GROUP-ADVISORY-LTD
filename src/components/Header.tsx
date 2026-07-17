@@ -26,9 +26,9 @@ export function Header() {
     // NOTE: keep the root free of filter/transform/backdrop-filter — those create
     // a containing block that would trap the fixed mobile overlay inside the bar.
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Top bar */}
+      {/* Top bar — kept above the overlay so the logo + close stay visible */}
       <div
-        className={`transition-colors duration-300 ${
+        className={`relative z-50 transition-colors duration-300 ${
           scrolled || open
             ? "border-b border-white/10 bg-ink/95 backdrop-blur-md"
             : "border-b border-transparent bg-transparent"
