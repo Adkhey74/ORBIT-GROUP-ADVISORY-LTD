@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/*
+  Orbit Group — design tokens
+  Extracted from the brand deck: near-black canvas, white, electric-violet accent,
+  metallic silver for the globe. Sections alternate dark / light.
+*/
+
+@theme {
+  /* Brand palette */
+  --color-ink: #050505; /* near-black canvas */
+  --color-ink-soft: #0d0d10; /* elevated dark surfaces */
+  --color-paper: #ffffff; /* light sections */
+  --color-paper-soft: #f4f4f6; /* subtle light surfaces */
+
+  --color-accent: #5b21e6; /* electric violet */
+  --color-accent-bright: #7c3aed; /* hover / highlight */
+  --color-accent-soft: #a78bfa; /* muted violet on dark */
+
+  --color-silver: #d8d8de;
+  --color-silver-dim: #9a9aa4;
+
+  /* Neutral text scales */
+  --color-fg: #050505;
+  --color-muted: #55555f;
+
+  /* Fonts (wired to next/font variables in layout.tsx) */
+  --font-display: var(--ff-display), "Arial Black", sans-serif;
+  --font-sans: var(--ff-sans), system-ui, sans-serif;
+  --font-wordmark: var(--ff-wordmark), sans-serif;
+
+  /* Layout */
+  --spacing-section: 7rem;
+}
+
+:root {
+  --background: var(--color-ink);
+  --foreground: #ededed;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* offset anchors for the sticky header (no-JS fallback; Lenis handles the rest) */
+  scroll-padding-top: 5rem;
+}
+
+/* Lenis smooth-scroll base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+body {
+  background: var(--color-ink);
+  color: #ededed;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Utility: letter-spaced uppercase eyebrow, echoing the deck's tracked caps */
+@utility tracked-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* Scroll-reveal base state (progressively enhanced by Reveal component) */
+@utility reveal-init {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Section label: violet tracked-caps preceded by a short rule */
+@utility eyebrow-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ---- Animations (marquee, radar, ticker) ---- */
+@keyframes orbit-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes orbit-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-blip {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes scrollcue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes orbit-scan {
+  0% {
+    top: -1px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.2;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-marquee {
+  animation: orbit-marquee linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  [data-radar] *,
+  [data-scan] {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbit Group — Executive Protection & Security Advisory</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#D4CFC8;--g2:#E8E4DF;--blk:#0B0B0B;--p:#111;--p2:#151515;--iv:rgba(255,255,255,.88);--mu:rgba(255,255,255,.42);--di:rgba(255,255,255,.2);--br:rgba(255,255,255,.07)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--blk);color:var(--iv);overflow-x:hidden}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;z-index:9999;transition:background .3s}
+#nav.sc{background:rgba(11,11,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--br)}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--g);cursor:pointer}
+.nlinks{display:flex;gap:28px;list-style:none}
+.nlinks li{position:relative}
+.nlinks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);text-decoration:none;cursor:pointer;transition:color .2s}
+.nlinks a:hover{color:var(--iv)}
+.ncta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border:1px solid var(--g);color:var(--g);background:none;cursor:pointer;transition:all .2s}
+.ncta:hover{background:var(--g);color:#000}
+/* PAGES */
+.pg{display:none}.pg.on{display:block}
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px 80px 100px;overflow:hidden;background:#080808}
+.radar-wrap{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:560px;height:560px;pointer-events:none}
+.radar-ring{position:absolute;border-radius:50%;border:1px solid rgba(212,207,200,.08)}
+.radar-ring:nth-child(1){inset:0}
+.radar-ring:nth-child(2){inset:14%;border-color:rgba(212,207,200,.06)}
+.radar-ring:nth-child(3){inset:28%;border-color:rgba(212,207,200,.05)}
+.radar-ring:nth-child(4){inset:42%;border-color:rgba(212,207,200,.07)}
+.radar-crossh{position:absolute;inset:0}
+.radar-crossh::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(212,207,200,.06)}
+.radar-crossh::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(212,207,200,.06)}
+.radar-sweep{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.radar-sweep::before{content:'';position:absolute;top:50%;left:50%;width:50%;height:50%;transform-origin:0% 100%;background:conic-gradient(from 0deg,transparent 0deg,rgba(212,207,200,.0) 60deg,rgba(212,207,200,.12) 90deg);animation:sweep 4s linear infinite;border-radius:0 100% 0 0}
+@keyframes sweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.radar-sweep::after{content:'';position:absolute;top:50%;left:50%;width:50%;height:1px;background:linear-gradient(90deg,rgba(212,207,200,.4),transparent);transform-origin:0% 50%;animation:sweep 4s linear infinite}
+.blip{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g);animation:blip-fade 4s ease-out infinite}
+.blip:nth-child(1){top:28%;left:62%;animation-delay:.8s}
+.blip:nth-child(2){top:55%;left:72%;animation-delay:1.6s}
+.blip:nth-child(3){top:70%;left:52%;animation-delay:2.2s}
+.blip:nth-child(4){top:38%;left:78%;animation-delay:3.1s}
+.blip:nth-child(5){top:48%;left:58%;animation-delay:.3s}
+@keyframes blip-fade{0%,100%{opacity:0;transform:scale(0)}5%{opacity:1;transform:scale(1)}40%{opacity:.6}80%{opacity:0;transform:scale(.5)}}
+.radar-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 30% 50%,rgba(8,8,8,.9) 0%,transparent 100%);pointer-events:none}
+.scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,207,200,.2),transparent);animation:sc 9s ease-in-out infinite;pointer-events:none}
+@keyframes sc{0%{top:-1px;opacity:0}5%{opacity:1}95%{opacity:.2}100%{top:100%;opacity:0}}
+.hc{position:relative;z-index:2;max-width:700px}
+.eb{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:24px}
+.eb::before{content:'';width:28px;height:1px;background:var(--g);display:block}
+.hc h1{font-family:'Fraunces',serif;font-size:clamp(42px,6vw,78px);font-weight:300;line-height:1.05;color:var(--iv);margin-bottom:22px}
+.hc h1 em{font-style:italic;color:rgba(255,255,255,.8)}
+.hc p{font-size:15px;font-weight:300;line-height:1.85;color:var(--mu);max-width:500px;margin-bottom:38px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.bs{background:var(--g);color:#000;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 28px;border:none;cursor:pointer;transition:all .2s}
+.bs:hover{background:var(--g2);transform:translateY(-2px)}
+.bg{border:1px solid rgba(255,255,255,.2);color:var(--mu);background:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;cursor:pointer;transition:all .2s}
+.bg:hover{border-color:var(--iv);color:var(--iv)}
+.ticker{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--br);padding:14px 0;overflow:hidden;z-index:2}
+.tinner{display:flex;white-space:nowrap;animation:tk 24s linear infinite}
+.tinner span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--di);padding:0 28px}
+@keyframes tk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* SECTIONS */
+.sec{padding:90px 0}
+.inn{max-width:1100px;margin:0 auto;padding:0 60px}
+.sl{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+.sl::before{content:'';width:22px;height:1px;background:var(--g);display:block}
+.sh{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:300;line-height:1.1;color:var(--iv);margin-bottom:18px}
+.sh em{font-style:italic}
+.sd{font-size:15px;font-weight:300;line-height:1.85;color:var(--mu)}
+/* ABOUT */
+#about{background:#111;border-top:1px solid var(--br)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--br);margin-top:48px}
+.st{background:#111;padding:24px 20px;border:1px solid rgba(255,255,255,.03)}
+.sn{font-family:'Fraunces',serif;font-size:34px;font-weight:300;color:var(--g);margin-bottom:6px}
+.sl2{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu)}
+/* SERVICES */
+#services{background:var(--blk);border-top:1px solid var(--br)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);margin-top:40px}
+.svc{background:var(--p2);padding:32px 28px;cursor:pointer;position:relative;overflow:hidden;transition:background .25s;border:1px solid rgba(255,255,255,.04)}
+.svc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--g);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+.svc:hover{background:#1c1c1c}
+.svc:hover::before{transform:scaleY(1)}
+.snum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--g);letter-spacing:2px;margin-bottom:14px}
+.svc h3{font-family:'Fraunces',serif;font-size:20px;font-weight:400;color:var(--iv);margin-bottom:14px}
+.sarr{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--g);opacity:0;transition:opacity .2s}
+.svc:hover .sarr{opacity:1}
+/* MARQUEE */
+#ind{background:#131313;border-top:1px solid var(--br);padding:28px 0;overflow:hidden}
+.mq{display:flex;white-space:nowrap;animation:mq 30s linear infinite}
+.mq span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 32px}
+.mq .dot{color:var(--g);padding:0}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* WHY */
+#why{background:#0e0e0e;border-top:1px solid var(--br)}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);margin-top:40px}
+.wc{background:var(--p2);padding:32px 28px;border:1px solid rgba(255,255,255,.04);transition:background .2s,opacity .6s,transform .6s;opacity:0;transform:translateY(40px)}
+.wc.vis{opacity:1;transform:translateY(0)}
+.wc:hover{background:#1a1a1a}
+.wn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:12px}
+.wc h3{font-family:'Fraunces',serif;font-size:17px;font-weight:400;color:var(--iv);margin-bottom:10px}
+.wc p{font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)}
+/* COVERAGE */
+#cov{background:#121212;border-top:1px solid var(--br)}
+/* CONTACT */
+#contact{background:var(--blk);border-top:1px solid var(--br)}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:40px}
+.cil{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-bottom:4px;margin-top:14px}
+.civ{font-size:14px;font-weight:300;color:var(--mu)}
+.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.fg{margin-bottom:12px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,select,textarea{width:100%;background:var(--p);border:1px solid var(--br);color:var(--iv);font-family:'Inter',sans-serif;font-size:14px;font-weight:300;padding:10px 13px;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0}
+input:focus,select:focus,textarea:focus{border-color:rgba(212,207,200,.5)}
+input::placeholder,textarea::placeholder{color:var(--di)}
+select option{background:var(--p)}
+textarea{resize:vertical;min-height:100px}
+.fsub{width:100%;background:var(--g);color:#000;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:13px;border:none;cursor:pointer;margin-top:6px;transition:background .2s}
+.fsub:hover{background:var(--g2)}
+.conf{display:none;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--g);margin-top:12px;padding:11px 14px;border:1px solid rgba(212,207,200,.3)}
+.fnote{font-size:11px;color:var(--di);margin-top:8px;font-style:italic}
+/* FOOTER */
+footer{background:#0d0d0d;border-top:1px solid var(--br);padding:48px 60px 28px}
+.fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.flogo{font-family:'Fraunces',serif;font-size:17px;color:var(--g);margin-bottom:10px}
+.ftag{font-size:13px;font-weight:300;line-height:1.7;color:var(--mu)}
+.fc h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--di);margin-bottom:12px}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fc li{font-size:13px;font-weight:300;color:var(--mu)}
+.fc a{color:var(--mu);text-decoration:none;transition:color .2s}
+.fc a:hover{color:var(--iv)}
+.fb{border-top:1px solid var(--br);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fb span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--di)}
+/* DETAIL */
+#det{background:var(--blk);min-height:100vh;padding-top:62px}
+.dh{padding:72px 60px 52px;position:relative;overflow:hidden;border-bottom:1px solid var(--br);background:linear-gradient(155deg,#080808,#101010)}
+.dh::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,207,200,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,207,200,.03) 1px,transparent 1px);background-size:48px 48px}
+.dhalo{position:absolute;top:50%;right:8%;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(212,207,200,.05) 0%,transparent 70%);transform:translateY(-50%)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);background:none;border:none;cursor:pointer;margin-bottom:32px;transition:color .2s;position:relative;z-index:2}
+.back:hover{color:var(--g)}
+.dnum{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:3px;margin-bottom:10px;position:relative;z-index:2}
+.dh h1{font-family:'Fraunces',serif;font-size:clamp(34px,5vw,60px);font-weight:300;line-height:1.05;color:var(--iv);margin-bottom:18px;position:relative;z-index:2}
+.dh h1 em{font-style:italic;color:rgba(255,255,255,.65)}
+.dtag{font-size:15px;font-weight:300;line-height:1.8;color:var(--mu);max-width:560px;position:relative;z-index:2}
+.dbody{padding:60px;max-width:1100px;margin:0 auto}
+.dstitle{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:28px}
+.dstitle::before{content:'';width:22px;height:1px;background:var(--g);display:block}
+.capgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);margin-bottom:56px}
+.cap{background:#111;padding:28px 24px;border:1px solid rgba(255,255,255,.04);transition:background .2s}
+.cap:hover{background:#161616}
+.cico{display:none}
+.ctit{font-family:'Fraunces',serif;font-size:17px;font-weight:400;color:var(--iv);margin-bottom:8px}
+.cdesc{font-size:13px;font-weight:300;line-height:1.7;color:var(--mu);margin-bottom:14px}
+.clist{list-style:none;display:flex;flex-direction:column;gap:6px}
+.clist li{font-size:12px;font-weight:300;color:var(--mu);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
+.clist li::before{content:'—';color:var(--g);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;margin-top:1px}
+.dcta{background:#111;border:1px solid var(--br);padding:42px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.dcta p{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--iv);max-width:460px;line-height:1.4}
+.dcta p em{font-style:italic;color:rgba(255,255,255,.5)}
+/* fleet */
+.fleet-wrap{margin-bottom:56px}
+.fleet-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br)}
+.fleet-head{grid-column:1/-1;background:#111;padding:28px 24px;border:1px solid rgba(255,255,255,.04)}
+.fleet-card{background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)}
+.fleet-card.gold{background:#111;border:1px solid rgba(212,207,200,.15);position:relative;overflow:hidden}
+.fleet-badge{position:absolute;top:0;right:0;background:var(--g);padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#000}
+.fleet-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.fleet-price{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:var(--iv);line-height:1;margin-bottom:5px}
+.fleet-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.fleet-desc{font-size:12px;font-weight:300;color:var(--mu);line-height:1.7;margin-bottom:14px}
+.fleet-li{list-style:none;display:flex;flex-direction:column;gap:5px}
+.fleet-li li{font-size:11px;font-weight:300;color:var(--mu);display:flex;align-items:center;gap:8px}
+.fleet-li li::before{content:'—';color:var(--g);font-family:'JetBrains Mono',monospace;font-size:10px}
+.nav-ham{display:none;background:none;border:none;color:var(--iv);font-size:24px;cursor:pointer;line-height:1;padding:0}
+#mob-menu{display:none;position:fixed;inset:0;background:rgba(11,11,11,.98);z-index:9998;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+#mob-menu.open{display:flex}
+#mob-menu a{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);text-decoration:none;cursor:pointer;transition:color .2s}
+#mob-menu a:hover{color:var(--iv)}
+#mob-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--mu);font-size:28px;cursor:pointer}
+/* NETWORK */
+#network{background:var(--blk);min-height:100vh;padding-top:62px}
+@media(max-width:800px){
+  #nav{padding:0 20px}
+  .nlinks,.ncta{display:none}
+  .nav-ham{display:block}
+  #hero,.dh{padding:90px 24px 60px}
+  .inn,.dbody{padding:0 24px}
+  .stats,.sgrid,.wgrid,.capgrid,.cgrid,.fleet-grid{grid-template-columns:1fr}
+  .fleet-head{grid-column:1}
+  .fg2{grid-template-columns:1fr 1fr}
+  footer{padding:36px 24px 20px}
+  .fr{grid-template-columns:1fr}
+  .dcta{flex-direction:column;align-items:flex-start}
+  .radar-wrap{right:-30%;width:340px;height:340px}
+  .hc h1{font-size:clamp(36px,9vw,60px)}
+}
+@media(max-width:480px){.fg2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo" onclick="goMain()">Orbit Group</div>
+  <ul class="nlinks">
+    <li><a onclick="goMain();sc('about')">About</a></li>
+    <li><a onclick="goMain();sc('services')">Services</a></li>
+    <li><a onclick="goMain();sc('cov')">Coverage</a></li>
+    <li><a onclick="showNetwork()">Join the Network</a></li>
+    <li><a onclick="goMain();sc('contact')">Contact</a></li>
+  </ul>
+  <button class="ncta" onclick="goMain();sc('contact')">Confidential Enquiry</button>
+  <button class="nav-ham" onclick="openMob()" aria-label="Menu">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <button id="mob-close" onclick="closeMob()">✕</button>
+  <a onclick="goMain();sc('about');closeMob()">About</a>
+  <a onclick="goMain();sc('services');closeMob()">Services</a>
+  <a onclick="goMain();sc('cov');closeMob()">Coverage</a>
+  <a onclick="showNetwork();closeMob()">Join the Network</a>
+  <a onclick="goMain();sc('contact');closeMob()">Contact</a>
+  <button class="bs" onclick="goMain();sc('contact');closeMob()">Confidential Enquiry</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="pg on">
+
+<section id="hero">
+  <div class="radar-wrap">
+    <div class="radar-ring"></div><div class="radar-ring"></div>
+    <div class="radar-ring"></div><div class="radar-ring"></div>
+    <div class="radar-crossh"></div>
+    <div class="radar-sweep"></div>
+    <div class="blip"></div><div class="blip"></div><div class="blip"></div>
+    <div class="blip"></div><div class="blip"></div>
+  </div>
+  <div class="radar-vignette"></div>
+  <div class="scan"></div>
+  <div class="hc">
+    <div class="eb">Executive Protection &amp; Mobility</div>
+    <h1>Trusted European Security<br><em>&amp; Mobility Partner.</em></h1>
+    <p>Orbit Group is a trusted European security and mobility partner providing bespoke security solutions for family offices, principals and corporate executives. Delivered with discretion and operational precision.</p>
+    <div class="btns">
+      <button class="bs" onclick="sc('contact')">Submit a Confidential Enquiry</button>
+      <button class="bg" onclick="sc('services')">Our Services</button>
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="tinner">
+      <span>LON 51.5074° N / 0.1278° W</span><span>·</span><span>PAR 48.8566° N / 2.3522° E</span><span>·</span><span>GVA 46.2044° N / 6.1432° E</span><span>·</span><span>NICE 43.7102° N / 7.2620° E</span><span>·</span>
+      <span>LON 51.5074° N / 0.1278° W</span><span>·</span><span>PAR 48.8566° N / 2.3522° E</span><span>·</span><span>GVA 46.2044° N / 6.1432° E</span><span>·</span><span>NICE 43.7102° N / 7.2620° E</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="sec">
+  <div class="inn">
+    <div class="sl">About Orbit Group</div>
+    <h2 class="sh">Independent <em>by Design.</em></h2>
+    <p class="sd" style="max-width:680px;margin-bottom:14px">Orbit Group is an independent security consultancy supporting family offices, private offices and executive leadership across the UK and Europe.</p>
+    <p class="sd" style="max-width:680px;margin-bottom:14px">We provide discreet security advisory, executive mobility and operational coordination through a deliberately selective model. From secure ground transportation and executive drivers to residential security support and trusted local partners, we deliver integrated solutions designed around each client's environment and operational requirements.</p>
+    <p class="sd" style="max-width:680px;margin-bottom:14px">Rather than operating as a traditional security company, we act as a trusted extension of the private office — coordinating people, logistics and security with consistency, discretion and direct senior oversight.</p>
+    <p class="sd" style="max-width:680px">Our approach is built on operational discipline, long-term relationships and the belief that the best security is measured not by its visibility, but by the confidence it provides.</p>
+    <div class="stats">
+      <div class="st"><div class="sn">15+</div><div class="sl2">Years of Operational Experience</div></div>
+      <div class="st"><div class="sn">100+</div><div class="sl2">Protection Operations</div></div>
+      <div class="st"><div class="sn">4</div><div class="sl2">European Operational Regions</div></div>
+      <div class="st"><div class="sn">24/7</div><div class="sl2">Operational Availability</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="sec">
+  <div class="inn">
+    <div class="sl">Services</div>
+    <h2 class="sh">Four disciplines.<br><em>One standard.</em></h2>
+    <div class="sgrid">
+      <div class="svc" onclick="openSvc('ep')"><div class="snum">01</div><h3>Executive Protection</h3><div class="sarr">View service →</div></div>
+      <div class="svc" onclick="openSvc('sd')"><div class="snum">02</div><h3>Executive Chauffeur</h3><div class="sarr">View service →</div></div>
+      <div class="svc" onclick="openSvc('rs')"><div class="snum">03</div><h3>Residential Security</h3><div class="sarr">View service →</div></div>
+      <div class="svc" onclick="openSvc('sy')"><div class="snum">04</div><h3>Superyacht Security</h3><div class="sarr">View service →</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ind">
+  <div style="overflow:hidden"><div class="mq">
+    <span>Family Offices</span><span class="dot">·</span><span>UHNW Principals</span><span class="dot">·</span><span>Private Equity</span><span class="dot">·</span><span>Yachting</span><span class="dot">·</span><span>Private Aviation</span><span class="dot">·</span><span>Real Estate</span><span class="dot">·</span><span>Art &amp; Collectibles</span><span class="dot">·</span><span>Corporate Executives</span><span class="dot">·</span>
+    <span>Family Offices</span><span class="dot">·</span><span>UHNW Principals</span><span class="dot">·</span><span>Private Equity</span><span class="dot">·</span><span>Yachting</span><span class="dot">·</span><span>Private Aviation</span><span class="dot">·</span><span>Real Estate</span><span class="dot">·</span><span>Art &amp; Collectibles</span><span class="dot">·</span><span>Corporate Executives</span><span class="dot">·</span>
+  </div></div>
+</section>
+
+<section id="why" class="sec">
+  <div class="inn">
+    <div class="sl">Why Orbit</div>
+    <h2 class="sh">What sets us apart.</h2>
+    <p class="sd" style="max-width:680px;margin-bottom:40px">Orbit Group acts as a trusted operational partner, coordinating the people, intelligence and protective resources required to keep principals, families and private environments secure, discreet and seamlessly managed.</p>
+    <div class="wgrid">
+      <div class="wc"><div class="wn">01 —</div><h3>Trusted Network</h3><p>A vetted network of operators, analysts and local providers built over a decade of private client work. Every resource deployed is known, tested and accountable.</p></div>
+      <div class="wc"><div class="wn">02 —</div><h3>Discretion First</h3><p>Security that is felt, not seen. Every engagement is structured to blend seamlessly into the principal's environment — invisible to the outside world, by design.</p></div>
+      <div class="wc"><div class="wn">03 —</div><h3>Cross-border Coordination</h3><p>Seamless operational continuity across jurisdictions — London, Geneva, the Riviera or internationally. Coverage follows without friction.</p></div>
+      <div class="wc"><div class="wn">04 —</div><h3>One Point of Contact</h3><p>Principals and private offices deal directly with the person executing the work. One line, full accountability — with the consistency and trust that comes from a founder-led practice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cov" class="sec">
+  <div class="inn">
+    <div class="sl">Coverage</div>
+    <h2 class="sh">Where we <em>operate.</em></h2>
+    <div style="margin-top:40px;border:1px solid var(--br);background:#0d0d0d">
+      <svg viewBox="0 0 1010 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+        <defs>
+          <pattern id="mg" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.6" fill="rgba(255,255,255,0.04)"/></pattern>
+          <radialGradient id="og" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D4CFC8" stop-opacity=".12"/><stop offset="100%" stop-color="#D4CFC8" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1010" height="500" fill="#0d0d0d"/><rect width="1010" height="500" fill="url(#mg)"/>
+        <path fill="rgba(45,45,45,.9)" stroke="rgba(85,85,85,.3)" stroke-width=".7" d="M60,75 L90,60 L125,55 L158,60 L185,72 L200,92 L200,118 L188,142 L170,160 L148,172 L122,180 L96,175 L74,162 L58,144 L48,122 L48,98 Z"/>
+        <path fill="rgba(42,42,42,.85)" stroke="rgba(82,82,82,.25)" stroke-width=".6" d="M170,160 L188,142 L200,152 L204,172 L195,200 L182,228 L170,258 L158,288 L148,318 L140,345 L132,318 L126,288 L130,258 L138,228 L148,200 Z"/>
+        <path fill="rgba(52,50,48,.98)" stroke="rgba(105,100,90,.4)" stroke-width=".9" d="M462,58 L485,48 L510,44 L536,46 L556,54 L568,68 L568,86 L558,104 L542,118 L522,128 L502,136 L482,144 L464,150 L448,144 L436,132 L430,116 L432,100 L440,82 Z"/>
+        <path fill="rgba(44,44,44,.88)" stroke="rgba(86,86,86,.22)" stroke-width=".6" d="M474,24 L502,14 L528,18 L542,32 L536,46 L510,44 L485,48 L470,38 Z"/>
+        <path fill="rgba(48,46,44,.95)" stroke="rgba(98,94,85,.32)" stroke-width=".7" d="M448,58 L462,58 L472,64 L472,78 L462,86 L448,80 L442,70 Z"/>
+        <path fill="rgba(46,44,42,.9)" stroke="rgba(92,88,80,.28)" stroke-width=".7" d="M442,132 L448,144 L450,158 L445,170 L428,178 L412,172 L402,158 L402,142 L412,132 L428,126 Z"/>
+        <path fill="rgba(38,38,38,.9)" stroke="rgba(75,75,75,.2)" stroke-width=".6" d="M568,44 L635,30 L705,24 L775,22 L840,26 L895,36 L930,50 L936,66 L924,82 L900,94 L868,102 L835,108 L800,108 L765,105 L730,102 L695,98 L662,95 L630,92 L600,88 L574,84 L565,72 Z"/>
+        <path fill="rgba(38,38,38,.88)" stroke="rgba(75,75,75,.18)" stroke-width=".6" d="M630,92 L695,98 L755,102 L812,108 L858,112 L888,120 L910,132 L912,148 L898,162 L872,172 L840,176 L804,174 L768,168 L732,162 L700,156 L668,152 L638,146 L612,138 L594,126 L580,114 L584,102 Z"/>
+        <path fill="rgba(38,38,38,.88)" stroke="rgba(75,75,75,.18)" stroke-width=".6" d="M755,102 L820,106 L872,112 L910,120 L938,132 L952,148 L948,166 L930,182 L904,192 L872,196 L838,192 L804,184 L770,176 L742,166 L714,156 L696,142 L698,126 L714,112 Z"/>
+        <path fill="rgba(40,40,40,.88)" stroke="rgba(78,78,78,.18)" stroke-width=".6" d="M630,146 L665,152 L698,156 L722,166 L734,182 L730,202 L714,218 L692,228 L668,232 L644,226 L622,212 L608,194 L606,174 L612,156 Z"/>
+        <path fill="rgba(42,42,42,.88)" stroke="rgba(80,80,80,.18)" stroke-width=".6" d="M560,116 L590,112 L620,116 L640,130 L642,148 L630,160 L610,166 L588,162 L568,150 L560,134 Z"/>
+        <path fill="rgba(38,38,38,.9)" stroke="rgba(75,75,75,.24)" stroke-width=".7" d="M448,158 L484,148 L520,152 L552,162 L570,178 L574,202 L566,228 L554,255 L534,282 L510,308 L484,330 L458,345 L432,352 L406,345 L382,328 L362,306 L348,280 L342,252 L342,222 L350,196 L360,174 L375,160 L400,150 L426,146 Z"/>
+        <path fill="rgba(38,38,38,.85)" stroke="rgba(75,75,75,.2)" stroke-width=".6" d="M800,355 L848,342 L896,347 L926,368 L930,396 L915,424 L886,444 L848,452 L810,444 L782,424 L770,397 L775,368 Z"/>
+        <circle cx="516" cy="108" r="118" fill="url(#og)" opacity=".6"/>
+        <circle cx="516" cy="108" r="118" fill="none" stroke="#D4CFC8" stroke-width="1.2" stroke-dasharray="5,5" opacity=".4">
+          <animateTransform attributeName="transform" type="rotate" from="0 516 108" to="360 516 108" dur="40s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="516" cy="108" r="118" fill="none" stroke="#D4CFC8" stroke-width="0.4" stroke-dasharray="2,18" opacity=".15">
+          <animateTransform attributeName="transform" type="rotate" from="360 516 108" to="0 516 108" dur="25s" repeatCount="indefinite"/>
+        </circle>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.3s" fill="freeze"/>
+          <circle cx="497" cy="72" r="5" fill="#D4CFC8"/><circle cx="497" cy="72" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <circle cx="497" cy="72" r="5" fill="none" stroke="#D4CFC8" stroke-width="0.5" opacity="0"><animate attributeName="r" values="5;22" dur="1.2s" begin="0.3s" fill="freeze"/><animate attributeName="opacity" values="0.4;0" dur="1.2s" begin="0.3s" fill="freeze"/></circle>
+          <line x1="497" y1="72" x2="435" y2="52" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="358" y="45" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">UNITED KINGDOM</text>
+          <text x="365" y="56" font-family="JetBrains Mono" font-size="7.5" fill="rgba(212,207,200,.45)" letter-spacing="1.5">LONDON</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.8s" fill="freeze"/>
+          <circle cx="510" cy="79" r="5" fill="#D4CFC8"/><circle cx="510" cy="79" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <line x1="510" y1="79" x2="445" y2="68" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="358" y="62" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">FRANCE · PARIS</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.3s" fill="freeze"/>
+          <circle cx="522" cy="88" r="5" fill="#D4CFC8"/><circle cx="522" cy="88" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <line x1="522" y1="88" x2="594" y2="72" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="596" y="66" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">SWITZERLAND</text>
+          <text x="596" y="77" font-family="JetBrains Mono" font-size="7.5" fill="rgba(212,207,200,.45)" letter-spacing="1.5">GENEVA</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze"/>
+          <circle cx="526" cy="98" r="5" fill="#D4CFC8"/><circle cx="526" cy="98" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <line x1="526" y1="98" x2="594" y2="96" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="596" y="90" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">FRENCH RIVIERA</text>
+          <text x="596" y="101" font-family="JetBrains Mono" font-size="7.5" fill="rgba(212,207,200,.45)" letter-spacing="1.5">CÔTE D'AZUR</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="2.3s" fill="freeze"/>
+          <circle cx="528" cy="108" r="4" fill="#D4CFC8" opacity=".8"/>
+          <line x1="528" y1="108" x2="594" y2="112" stroke="#D4CFC8" stroke-width=".7" opacity=".3"/>
+          <text x="596" y="108" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">MONACO</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="2.8s" fill="freeze"/>
+          <circle cx="484" cy="108" r="5" fill="#D4CFC8"/><circle cx="484" cy="108" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <line x1="484" y1="108" x2="430" y2="118" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="340" y="112" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">SPAIN</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.4s" begin="3.3s" fill="freeze"/>
+          <circle cx="496" cy="116" r="5" fill="#D4CFC8"/><circle cx="496" cy="116" r="11" fill="none" stroke="#D4CFC8" stroke-width="1" opacity=".2"/>
+          <line x1="496" y1="116" x2="430" y2="132" stroke="#D4CFC8" stroke-width=".7" opacity=".35"/>
+          <text x="340" y="128" font-family="JetBrains Mono" font-size="9" fill="#D4CFC8" letter-spacing="2">IBIZA</text>
+          <text x="340" y="139" font-family="JetBrains Mono" font-size="7.5" fill="rgba(212,207,200,.45)" letter-spacing="1.5">BALEARIC ISLANDS</text>
+        </g>
+        <g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.1s" begin="4s" fill="freeze"/>
+          <circle cx="497" cy="72" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="4s" repeatCount="indefinite"/></circle>
+          <circle cx="510" cy="79" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="4.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="4.4s" repeatCount="indefinite"/></circle>
+          <circle cx="522" cy="88" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="4.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="4.8s" repeatCount="indefinite"/></circle>
+          <circle cx="526" cy="98" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="5.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="5.2s" repeatCount="indefinite"/></circle>
+          <circle cx="484" cy="108" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="5.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="5.6s" repeatCount="indefinite"/></circle>
+          <circle cx="496" cy="116" r="5" fill="none" stroke="#D4CFC8" stroke-width="1" opacity="0"><animate attributeName="r" values="5;16" dur="2.5s" begin="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="6s" repeatCount="indefinite"/></circle>
+        </g>
+        <text x="16" y="488" font-family="JetBrains Mono" font-size="7.5" fill="rgba(255,255,255,.08)" letter-spacing="2">WORLDWIDE DEPLOYMENT ON REQUEST · LON · PAR · GVA · NICE · MONACO</text>
+      </svg>
+    </div>
+    <div style="border:1px solid var(--br);border-top:none;overflow:hidden;padding:16px 0;background:#0d0d0d">
+      <div style="display:flex;white-space:nowrap;animation:mq 20s linear infinite">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">London — United Kingdom</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Paris — France</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Geneva — Switzerland</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Côte d'Azur — French Riviera</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Monaco</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Ibiza — Balearic Islands</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Worldwide — On Request</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">London — United Kingdom</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Paris — France</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Geneva — Switzerland</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Côte d'Azur — French Riviera</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Monaco</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Ibiza — Balearic Islands</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:0 8px">⬡</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);padding:0 28px">Worldwide — On Request</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec">
+  <div class="inn">
+    <div class="sl">Contact</div>
+    <h2 class="sh">Submit a <em>Confidential Enquiry.</em></h2>
+    <div class="cgrid">
+      <div>
+        <p class="sd" style="margin-bottom:20px">All enquiries are treated in strict confidence. A member of the team will respond within one business day.</p>
+        <div class="cil">Email</div><div class="civ">orbitgroupsecurity@proton.me</div>
+        <div class="cil">Website</div><div class="civ">orbitgroupsecurity.com</div>
+        <div class="cil">Principal Office</div><div class="civ">95 Wilton Road, London</div>
+        <div class="cil">Offices</div><div class="civ">London · Paris · French Riviera · Geneva · Monaco</div>
+      </div>
+      <div>
+        <div class="fg"><div class="fr"><div><label class="fl">Name</label><input type="text" placeholder="Full name"></div><div><label class="fl">Organisation</label><input type="text" placeholder="Optional"></div></div></div>
+        <div class="fg"><label class="fl">Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label class="fl">Nature of Enquiry</label>
+          <select><option>Executive Protection</option><option>Executive Chauffeur</option><option>Residential Security</option><option>Superyacht Security</option><option>Drone Security</option><option>Other</option></select>
+        </div>
+        <div class="fg"><label class="fl">Message</label><textarea placeholder="Describe your requirement…"></textarea></div>
+        <button class="fsub" onclick="subForm()">Submit Enquiry</button>
+        <div class="conf" id="conf">Your enquiry has been received. We will be in touch shortly.</div>
+        <p class="fnote">Orbit Group Advisory Ltd · Registered in England &amp; Wales · Co. No. 17293435</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inn">
+    <div class="fg2">
+      <div><div class="flogo">Orbit Group</div><p class="ftag">Strategic intelligence, security advisory and executive mobility for private clients worldwide.</p></div>
+      <div class="fc"><h4>Offices</h4><ul><li>London</li><li>Paris</li><li>French Riviera</li><li>Geneva</li><li>Monaco</li></ul></div>
+      <div class="fc"><h4>Divisions</h4><ul><li>Orbit Intelligence</li><li>Orbit Advisory</li><li>Orbit Mobility</li><li>Orbit Operations</li></ul></div>
+      <div class="fc"><h4>Contact</h4><ul><li><a href="mailto:orbitgroupsecurity@proton.me">Email</a></li><li><a href="#">LinkedIn</a></li><li style="color:var(--di);font-size:12px;margin-top:4px">By appointment only</li></ul></div>
+    </div>
+    <div class="fb">
+      <span>© 2025 Orbit Group Advisory Ltd · Registered in England &amp; Wales · Company No. 17293435</span>
+      <span>Confidential. By appointment only.</span>
+    </div>
+  </div>
+</footer>
+</div><!-- /main -->
+
+<!-- DETAIL PAGE -->
+<div id="det" class="pg">
+  <div class="dh">
+    <div class="dhalo"></div>
+    <div class="inn">
+      <button class="back" onclick="goMain()">← Back to Services</button>
+      <div class="dnum" id="dnum"></div>
+      <h1 id="dtit"></h1>
+      <p class="dtag" id="dtag"></p>
+    </div>
+  </div>
+  <div class="dbody">
+    <div class="dstitle">Capabilities</div>
+    <div class="capgrid" id="capgrid"></div>
+    <div id="extra-section"></div>
+    <div id="fleet-section"></div>
+    <div class="dcta">
+      <p>Ready to discuss your <em>security requirements?</em></p>
+      <button class="bs" onclick="goMain();sc('contact')">Submit a Confidential Enquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- NETWORK PAGE -->
+<div id="network" class="pg">
+  <div class="dh">
+    <div class="dhalo"></div>
+    <div class="inn">
+      <button class="back" onclick="goMain()">← Back</button>
+      <div class="dnum">JOIN THE NETWORK</div>
+      <h1>Join our network<br><em>of operators.</em></h1>
+      <p class="dtag">Orbit Group operates through a deliberately small network of vetted close protection officers, security drivers, maritime specialists and local partners — deployed on UHNW mandates across Europe. If you operate at the level we require, we want to hear from you.</p>
+    </div>
+  </div>
+  <div class="dbody">
+    <div class="dstitle">Why join Orbit</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);margin-bottom:56px">
+      <div style="background:#111;padding:32px 28px;border:1px solid rgba(255,255,255,.04);grid-column:1/-1">
+        <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--mu);max-width:760px">Orbit Group is not a conventional security agency. We operate as a trusted operational network — built on direct relationships, selective mandates and an absolute standard of discretion. Every operator integrated into the network is treated as a partner, not an interchangeable resource.</p>
+      </div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">01 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">High-value mandates</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">Our clients are family offices, UHNW principals and senior executives. You operate in demanding, discreet environments that match your level.</p></div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">02 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">Direct access to decision-makers</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">No intermediary, no agency layer. You work directly with the Orbit founder. Decisions are fast, briefings are clear, feedback is honest.</p></div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">03 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">European deployments</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">London, Paris, the French Riviera, Geneva, Monaco, Ibiza — and beyond for the right profiles. Assignments can be short-term, recurring or seasonal.</p></div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">04 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">Fair compensation</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">Day rates are agreed directly, with no agency deduction. We do not undercut experienced operators — quality work is compensated accordingly.</p></div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">05 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">Discretion and respect</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">Your application is handled under NDA. Your details are never shared without your explicit consent. We treat every operator with the same discretion we apply to our clients.</p></div>
+      <div style="background:#0e0e0e;padding:28px 24px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--g);letter-spacing:2px;margin-bottom:14px">06 —</div><div style="font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--iv);margin-bottom:10px">Long-term relationships</div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">Our network is deliberately small. Operators who perform well are called back first — not replaced at the first opportunity. We build partnerships, not rosters.</p></div>
+    </div>
+    <div class="dstitle">Profiles we look for</div>
+    <div class="capgrid" style="margin-bottom:56px">
+      <div class="cap"><div class="ctit">Close Protection Officers</div><p class="cdesc">Experienced CPOs with a proven track record in UHNW or diplomatic environments. Discretion, composure and operational discipline are non-negotiable.</p><ul class="clist"><li>SIA CP licence or CNAPS A3P equivalent</li><li>Minimum 3 years active EP experience</li><li>UHNW, diplomatic or corporate background</li><li>First aid qualification (SST / TECC preferred)</li><li>English required — French, Spanish or Arabic a plus</li></ul></div>
+      <div class="cap"><div class="ctit">Security Drivers &amp; Chauffeurs</div><p class="cdesc">Protective drivers with executive chauffeur experience and genuine close protection awareness. The vehicle is an extension of the security operation.</p><ul class="clist"><li>Advanced or defensive driving qualification</li><li>Experience with UHNW or executive clients</li><li>Clean licence — PCO licence preferred (London)</li><li>Immaculate presentation and discretion</li><li>Counter-surveillance awareness</li></ul></div>
+      <div class="cap"><div class="ctit">Maritime Security Specialists</div><p class="cdesc">Experienced operators with superyacht or maritime security backgrounds, comfortable in discreet high-expectation private client environments.</p><ul class="clist"><li>Close protection experience in maritime environments</li><li>STCW certification preferred</li><li>Mediterranean deployment experience</li><li>Seamless integration with yacht crew</li><li>Flexible seasonal availability</li></ul></div>
+      <div class="cap"><div class="ctit">Local Partners &amp; Fixers</div><p class="cdesc">Trusted ground-level contacts in our key operational zones who know their territory better than anyone.</p><ul class="clist"><li>Deep local knowledge in an Orbit coverage zone</li><li>Security, intelligence or law enforcement background</li><li>Discreet, reliable and professionally presented</li><li>Available for advance work and local coordination</li><li>References from previous private client mandates</li></ul></div>
+    </div>
+    <div class="dstitle">Apply to join</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-bottom:56px">
+      <div>
+        <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--mu);margin-bottom:20px">All applications are reviewed personally. If your profile matches our requirements, we will contact you directly for a confidential conversation.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--mu);margin-bottom:20px">We do not maintain an open roster. Every network member is vetted, referenced and onboarded individually.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="width:18px;height:1px;background:var(--g);display:block"></span>Handled under strict NDA</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:8px"><span style="width:18px;height:1px;background:var(--g);display:block"></span>Response within 72h if profile retained</div>
+      </div>
+      <div>
+        <div class="fg"><div class="fr"><div><label class="fl">Full Name</label><input type="text" placeholder="Your full name"></div><div><label class="fl">Nationality</label><input type="text" placeholder="British, French…"></div></div></div>
+        <div class="fg"><label class="fl">Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label class="fl">Role</label><select><option>Close Protection Officer</option><option>Security Driver / Chauffeur</option><option>Maritime Security Specialist</option><option>Local Partner / Fixer</option><option>Other</option></select></div>
+        <div class="fg"><label class="fl">Certifications</label><input type="text" placeholder="SIA, CNAPS A3P, STCW, SST, TECC…"></div>
+        <div class="fg"><label class="fl">Years of Experience</label><select><option>1–3 years</option><option>3–5 years</option><option>5–10 years</option><option>10+ years</option></select></div>
+        <div class="fg"><label class="fl">Languages</label><input type="text" placeholder="English, French, Arabic…"></div>
+        <div class="fg"><label class="fl">Background &amp; Availability</label><textarea placeholder="Summarise your experience, operational background and current availability…"></textarea></div>
+        <button class="fsub" onclick="subNetwork()">Submit Application</button>
+        <div class="conf" id="conf-net">Your application has been received. We will be in touch if your profile matches our requirements.</div>
+        <p class="fnote">All applications handled in strict confidence under NDA. Orbit Group Advisory Ltd · Co. No. 17293435</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var SVC = {
+  ep:{num:"01 — EXECUTIVE PROTECTION",tit:"Executive<br><em>Protection.</em>",tag:"Discreet, operationally trained close protection officers deployed around principals, families and executives. Built around the specific threat profile — not a generic template.",
+    caps:[
+      {tit:"Close Protection Officers",desc:"Experienced CPOs deployed individually or as part of a structured team. All operatives are vetted, trained to advanced EP standards and operate with total discretion.",items:["Principal and family protection","Solo CPO or multi-officer deployments","Plainclothes and low-profile operations","24/7 availability on assignment"]},
+      {tit:"Complete Protective Teams",desc:"Full team deployment for principals requiring comprehensive, multi-layered close protection across residences, travel and public engagements.",items:["Team leader + CPO structure","Advance and follow vehicles","Coordination with residential security","Full shift coverage and handover protocols"]},
+      {tit:"Corporate Security Reinforcement",desc:"Structured security support for corporate executives and C-suite principals during high-profile events, sensitive negotiations or elevated threat periods.",items:["Executive travel protection","Conference and event security","Threat-specific deployment planning","Discreet integration with existing security"]},
+      {tit:"International Deployments",desc:"Cross-border protection operations coordinated across multiple jurisdictions, with local provider liaison and seamless handover between teams.",items:["Multi-country itinerary planning","Local vetted operator coordination","Airport and private aviation protocols","Full advance and route intelligence"]}
+    ]},
+  sd:{num:"02 — EXECUTIVE CHAUFFEUR",tit:"Executive<br><em>Chauffeur.</em>",tag:"Vetted, protectively-trained chauffeurs combining executive-level service with close protection awareness. Every journey is a security operation conducted without friction.",
+    caps:[
+      {tit:"Protective Driving",desc:"Drivers trained in advanced and defensive driving techniques, route planning, counter-surveillance and emergency protocols.",items:["Advanced and evasive driving qualification","Route reconnaissance and planning","Counter-surveillance on all journeys","Emergency extraction protocols"]},
+      {tit:"Discreet Executive Transport",desc:"Seamless, silent service calibrated to UHNW expectations. The principal simply moves.",items:["Fleet management and vehicle preparation","Airport and FBO protocols","Coordinated arrivals and departures","Luggage and asset handling"]},
+      {tit:"International Driver Networks",desc:"Vetted local drivers coordinated across all Orbit Group coverage zones and beyond.",items:["Pre-vetted local driver network","SOP alignment","Language capability matching","Real-time coordination with CPO team"]},
+      {tit:"High-Risk Mobility",desc:"Specialist mobile protection for elevated threat environments requiring armoured vehicles and convoy procedures.",items:["Armoured vehicle coordination","Convoy and escort planning","Liaison with local security forces","Armed driver options where permitted"]}
+    ]},
+  rs:{num:"03 — RESIDENTIAL SECURITY",tit:"Residential<br><em>Security.</em>",tag:"End-to-end security assessment and implementation for private residences, estates and seasonal properties. Designed to protect without disrupting the private life within.",
+    caps:[
+      {tit:"Residential Security Assessment",desc:"Comprehensive vulnerability audit covering physical security, access control, perimeter integrity and staff protocols.",items:["Perimeter and access control review","CCTV and alarm system evaluation","Staff and visitor management","Emergency response planning"]},
+      {tit:"Security Implementation",desc:"Orbit Group oversees the implementation of recommendations — from technical systems to personnel deployment.",items:["Security system installation liaison","Guard force deployment and management","SOP creation for residential staff","Safe room and contingency planning"]},
+      {tit:"Seasonal Property Security",desc:"Security planning for seasonal residences — Riviera villas, ski chalets, island estates.",items:["Pre-arrival security sweep","Seasonal guard deployment","Local threat environment briefing","Departure and property closure procedure"]},
+      {tit:"Household & Tenant Screening",desc:"Discreet vetting of prospective household staff and tenants for high-value residential properties.",items:["Identity and financial standing verification","Criminal record and reference checks","Social engineering awareness briefing","Ongoing monitoring available"]}
+    ],
+    extra:{title:"Drone Security",
+      paras:["For large private estates where traditional guard coverage has limitations, Orbit Group deploys autonomous surveillance drones using the DJI Dock 3 — an autonomous docking and recharging station enabling fully automated patrol missions, scheduled flights and alarm-triggered responses without requiring an on-site pilot.","Orbit Group also supports private estates, family offices and high-profile events with counter-drone risk assessments and airspace monitoring. Working with specialist partners including AeroSentry Patrol, we integrate portable drone detection systems capable of identifying nearby drone activity, locating operators and providing real-time airspace awareness."],
+      items:["Autonomous drone patrol — DJI Dock 3","Drone docking and automatic recharging","Scheduled or alarm-triggered aerial surveillance","Thermal and low-light imaging","Counter-drone detection and identification","Pilot geolocation","Temporary event deployments","Estate and residential airspace monitoring","Integration with on-site security teams","Security technology advisory and coordination"]}
+  },
+  sy:{num:"04 — SUPERYACHT SECURITY",tit:"Superyacht<br><em>Security.</em>",tag:"Specialist security support for private vessels and maritime environments. From crew vetting to on-board security — across the Mediterranean and beyond.",
+    caps:[
+      {tit:"On-Board Security",desc:"Discreet security presence on board for owner voyages and private events — fully integrated into vessel operations, crew structure and guest experience.",items:["Owner, guest and event security","Low-profile integration with crew","On-board event coordination","Emergency and medical protocols"]},
+      {tit:"Ashore Coordination",desc:"Ground-level security coordination for shore visits, restaurant evenings, marina events and private gatherings — seamlessly extended from the vessel.",items:["Shore excursion advance work","Restaurant and venue security","Marina and quayside coordination","Liaison with local security assets"]},
+      {tit:"Crew Vetting",desc:"Comprehensive background verification for all crew members before they join the vessel.",items:["Identity and qualification verification","Criminal record checks","Reference and employment history","Ongoing monitoring available"]},
+      {tit:"Anti-Paparazzi & Counter-Surveillance",desc:"Comprehensive privacy protection on board and ashore — combining physical counter-surveillance, drone detection and media management.",items:["Physical counter-surveillance on deck and ashore","Drone detection and monitoring","Marina and anchorage privacy management","Identification of known press and paparazzi presence","Coordination with PR and communications teams"]}
+    ],
+    extra:{title:"Drone Security",
+      paras:["For superyachts at anchor or in marina, Orbit Group integrates autonomous drone surveillance using the DJI Dock 3 — enabling scheduled perimeter patrols around the vessel and immediate alarm-triggered responses without requiring an on-site pilot. Ideal for extended anchorages or high-profile events on board.","We also provide counter-drone detection and airspace monitoring to protect owner privacy and vessel security. Working with specialist partners including AeroSentry Patrol, we deploy portable systems capable of identifying nearby drone activity, locating operators and delivering real-time airspace awareness to the security team."],
+      items:["Autonomous drone patrol around the vessel — DJI Dock 3","Scheduled or alarm-triggered aerial surveillance","Thermal and low-light imaging","Counter-drone detection and identification","Pilot geolocation","Marina and anchorage airspace monitoring","Anti-paparazzi drone surveillance","Temporary event deployments","Integration with on-board security team","Security technology advisory and coordination"]}
+  }
+};
+
+function buildCaps(caps) {
+  var h = "";
+  for (var i = 0; i < caps.length; i++) {
+    var c = caps[i];
+    var li = "";
+    for (var j = 0; j < c.items.length; j++) { li += "<li>" + c.items[j] + "</li>"; }
+    h += '<div class="cap"><div class="ctit">' + c.tit + '</div><p class="cdesc">' + c.desc + '</p><ul class="clist">' + li + "</ul></div>";
+  }
+  return h;
+}
+
+function buildExtra(extra) {
+  var ps = "";
+  for (var i = 0; i < extra.paras.length; i++) {
+    ps += '<p style="font-size:14px;font-weight:300;line-height:1.85;color:var(--mu);margin-bottom:16px">' + extra.paras[i] + "</p>";
+  }
+  var els = "";
+  for (var j = 0; j < extra.items.length; j++) {
+    els += '<li style="font-size:13px;font-weight:300;color:var(--mu);display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--br)"><span style="color:var(--g);font-family:JetBrains Mono,monospace;font-size:10px;flex-shrink:0;margin-top:2px">—</span>' + extra.items[j] + "</li>";
+  }
+  return '<div style="margin-bottom:56px">' +
+    '<div style="font-family:Fraunces,serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--iv);margin-bottom:32px;line-height:1.1">' + extra.title + '</div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br)">' +
+      '<div style="background:#111;padding:32px 28px;border:1px solid rgba(255,255,255,.04)">' + ps + '</div>' +
+      '<div style="background:#111;padding:32px 28px;border:1px solid rgba(255,255,255,.04)">' +
+        '<div style="font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:20px;display:flex;align-items:center;gap:10px"><span style="width:22px;height:1px;background:var(--g);display:block"></span>Capabilities</div>' +
+        '<ul style="list-style:none">' + els + '</ul>' +
+      '</div>' +
+    '</div></div>';
+}
+
+function fleetCard(label, price, sub, desc, items, badge, gold) {
+  var cls = gold ? "fleet-card gold" : "fleet-card";
+  var bdg = badge ? '<div class="fleet-badge">' + badge + "</div>" : "";
+  var lis = "";
+  for (var i = 0; i < items.length; i++) { lis += "<li>" + items[i] + "</li>"; }
+  return '<div class="' + cls + '">' + bdg + '<div class="fleet-label">' + label + '</div><div class="fleet-price">' + price + '</div><div class="fleet-sub">' + sub + '</div><div class="fleet-desc">' + desc + '</div><ul class="fleet-li">' + lis + "</ul></div>";
+}
+
+function fleetVehicle(ico, name, sub, desc, t1, t2) {
+  return '<div class="fleet-wrap"><div class="dstitle">Fleet — ' + name + '</div><div class="fleet-grid">' +
+    '<div class="fleet-head"><div style="display:flex;align-items:center;gap:14px;margin-bottom:12px"><span style="font-size:22px">' + ico + '</span><div><div style="font-family:Fraunces,serif;font-size:18px;font-weight:400;color:var(--iv)">' + name + '</div><div style="font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-top:3px">' + sub + '</div></div></div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">' + desc + '</p></div>' +
+    t1 + t2 +
+    '</div><p class="fleet-note">All rates include VAT. Rates applicable for London operations. Contact us for bespoke quotations.</p></div>';
+}
+
+function buildFleet() {
+  var m = fleetVehicle("🚐", "Mercedes-Benz V-Class &amp; S-Class", "Executive Configuration · London",
+    "The Mercedes V-Class Executive and S-Class are our flagship vehicles for London operations. The V-Class accommodates up to 6 passengers; the S-Class offers a refined experience for solo principals. Both feature tinted windows, leather seating and climate control, driven by security-trained chauffeurs.",
+    fleetCard("Airport Transfer", "£200", "per transfer", "Heathrow to Central London. Meet &amp; greet and flight monitoring included.", ["All London airports covered","Real-time flight tracking","Meet &amp; greet in arrivals","Luggage assistance included"], "", false),
+    fleetCard("Daily Hire", "£800", "10 hours of service", "Full day hire with dedicated security-trained chauffeur.", ["10 hours of dedicated service","Unlimited stops within zone","Route planning included","CPO integration available"], "Most Popular", true));
+  var rr = fleetVehicle("👑", "Rolls-Royce Ghost", "Ultra-Premium · London",
+    "The Rolls-Royce Ghost represents the pinnacle of private ground transportation. Starlight headliner, bespoke leather interior and whisper-quiet ride quality — driven by our most senior security-trained chauffeurs.",
+    fleetCard("Airport Transfer", "£900", "per transfer", "Heathrow to Central London. White-glove meet &amp; greet and full luggage coordination.", ["All London airports covered","Real-time flight tracking","White-glove meet &amp; greet","Senior chauffeur assigned"], "", false),
+    fleetCard("Daily Hire", "£2,200", "10 hours of service", "The ultimate solution for principals requiring the finest in private ground transportation.", ["10 hours of dedicated service","Senior security-trained chauffeur","Unlimited stops within zone","CPO integration available"], "Premium", true));
+  var rrv = fleetVehicle("🏔", "Range Rover Autobiography", "Executive SUV · London",
+    "The Range Rover Autobiography combines commanding presence with exceptional refinement. Autobiography-grade interior, massaging seats, panoramic roof and all-terrain capability, driven by security-trained chauffeurs.",
+    fleetCard("Airport Transfer", "£350", "per transfer", "Heathrow to Central London. Meet &amp; greet and luggage coordination included.", ["All London airports covered","Real-time flight tracking","Meet &amp; greet in arrivals","Security-trained chauffeur"], "", false),
+    fleetCard("Daily Hire", "£1,100", "10 hours of service", "Ideal for private estate visits, multi-stop programmes and out-of-city operations.", ["10 hours of dedicated service","Security-trained chauffeur","Unlimited stops within zone","CPO integration available"], "Most Popular", true));
+  return m + rr + rrv;
+}
+
+function openSvc(key) {
+  var s = SVC[key];
+  if (!s) return;
+  document.getElementById("dnum").innerHTML = s.num;
+  document.getElementById("dtit").innerHTML = s.tit;
+  document.getElementById("dtag").innerHTML = s.tag;
+  document.getElementById("capgrid").innerHTML = buildCaps(s.caps);
+  document.getElementById("extra-section").innerHTML = s.extra ? buildExtra(s.extra) : "";
+  document.getElementById("fleet-section").innerHTML = (key === "sd") ? buildFleet() : "";
+  document.getElementById("main").className = "pg";
+  document.getElementById("det").className = "pg on";
+  document.getElementById("network").className = "pg";
+  window.scrollTo(0, 0);
+}
+
+function goMain() {
+  document.getElementById("det").className = "pg";
+  document.getElementById("network").className = "pg";
+  document.getElementById("main").className = "pg on";
+  window.scrollTo(0, 0);
+}
+
+function showNetwork() {
+  document.getElementById("main").className = "pg";
+  document.getElementById("det").className = "pg";
+  document.getElementById("network").className = "pg on";
+  window.scrollTo(0, 0);
+}
+
+function sc(id) {
+  setTimeout(function() {
+    var el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 62, behavior: "smooth" });
+  }, 50);
+}
+
+function subForm() { var c = document.getElementById("conf"); c.style.display = "block"; setTimeout(function() { c.style.display = "none"; }, 5000); }
+function subNetwork() { var c = document.getElementById("conf-net"); c.style.display = "block"; setTimeout(function() { c.style.display = "none"; }, 5000); }
+function openMob() { document.getElementById("mob-menu").classList.add("open"); document.body.style.overflow = "hidden"; }
+function closeMob() { document.getElementById("mob-menu").classList.remove("open"); document.body.style.overflow = ""; }
+
+window.addEventListener("scroll", function() {
+  document.getElementById("nav").className = window.scrollY > 40 ? "sc" : "";
+  var cards = document.querySelectorAll(".wc");
+  var delays = [0, 150, 300, 450];
+  for (var i = 0; i < cards.length; i++) {
+    if (cards[i].getBoundingClientRect().top < window.innerHeight - 80 && !cards[i].classList.contains("vis")) {
+      (function(card, d) { setTimeout(function() { card.classList.add("vis"); }, d); })(cards[i], delays[i] || 0);
+    }
+  }
+});
+</script>
+  ep:{num:"01 — EXECUTIVE PROTECTION",tit:"Executive<br><em>Protection.</em>",tag:"Discreet, operationally trained close protection officers deployed around principals, families and executives. Built around the specific threat profile — not a generic template.",
+    caps:[
+      {tit:"Close Protection Officers",desc:"Experienced CPOs deployed individually or as part of a structured team. All operatives are vetted, trained to advanced EP standards and operate with total discretion.",items:["Principal and family protection","Solo CPO or multi-officer deployments","Plainclothes and low-profile operations","24/7 availability on assignment"]},
+      {tit:"Complete Protective Teams",desc:"Full team deployment for principals requiring comprehensive, multi-layered close protection across residences, travel and public engagements.",items:["Team leader + CPO structure","Advance and follow vehicles","Coordination with residential security","Full shift coverage and handover protocols"]},
+      {tit:"Corporate Security Reinforcement",desc:"Structured security support for corporate executives and C-suite principals during high-profile events, sensitive negotiations or elevated threat periods.",items:["Executive travel protection","Conference and event security","Threat-specific deployment planning","Discreet integration with existing security"]},
+      {tit:"International Deployments",desc:"Cross-border protection operations coordinated across multiple jurisdictions, with local provider liaison and seamless handover between teams.",items:["Multi-country itinerary planning","Local vetted operator coordination","Airport and private aviation protocols","Full advance and route intelligence"]}
+    ]},
+  sd:{num:"02 — EXECUTIVE CHAUFFEUR",tit:"Executive<br><em>Chauffeur.</em>",tag:"Vetted, protectively-trained chauffeurs combining executive-level service with close protection awareness. Every journey is a security operation conducted without friction.",
+    caps:[
+      {tit:"Protective Driving",desc:"Drivers trained in advanced and defensive driving techniques, route planning, counter-surveillance and emergency protocols.",items:["Advanced and evasive driving qualification","Route reconnaissance and planning","Counter-surveillance on all journeys","Emergency extraction protocols"]},
+      {tit:"Discreet Executive Transport",desc:"Seamless, silent service calibrated to UHNW expectations. The principal simply moves.",items:["Fleet management and vehicle preparation","Airport and FBO protocols","Coordinated arrivals and departures","Luggage and asset handling"]},
+      {tit:"International Driver Networks",desc:"Vetted local drivers coordinated across all Orbit Group coverage zones and beyond.",items:["Pre-vetted local driver network","SOP alignment","Language capability matching","Real-time coordination with CPO team"]},
+      {tit:"High-Risk Mobility",desc:"Specialist mobile protection for elevated threat environments requiring armoured vehicles and convoy procedures.",items:["Armoured vehicle coordination","Convoy and escort planning","Liaison with local security forces","Armed driver options where permitted"]}
+    ]},
+  rs:{num:"03 — RESIDENTIAL SECURITY",tit:"Residential<br><em>Security.</em>",tag:"End-to-end security assessment and implementation for private residences, estates and seasonal properties. Designed to protect without disrupting the private life within.",
+    caps:[
+      {tit:"Residential Security Assessment",desc:"Comprehensive vulnerability audit covering physical security, access control, perimeter integrity and staff protocols.",items:["Perimeter and access control review","CCTV and alarm system evaluation","Staff and visitor management","Emergency response planning"]},
+      {tit:"Security Implementation",desc:"Orbit Group oversees the implementation of recommendations — from technical systems to personnel deployment.",items:["Security system installation liaison","Guard force deployment and management","SOP creation for residential staff","Safe room and contingency planning"]},
+      {tit:"Seasonal Property Security",desc:"Security planning for seasonal residences — Riviera villas, ski chalets, island estates.",items:["Pre-arrival security sweep","Seasonal guard deployment","Local threat environment briefing","Departure and property closure procedure"]},
+      {tit:"Household & Tenant Screening",desc:"Discreet vetting of prospective household staff and tenants for high-value residential properties.",items:["Identity and financial standing verification","Criminal record and reference checks","Social engineering awareness briefing","Ongoing monitoring available"]}
+    ],
+    extra:{title:"Drone Security",
+      paras:["For large private estates where traditional guard coverage has limitations, Orbit Group deploys autonomous surveillance drones using the DJI Dock 3 — an autonomous docking and recharging station enabling fully automated patrol missions, scheduled flights and alarm-triggered responses without requiring an on-site pilot.","Orbit Group also supports private estates, family offices and high-profile events with counter-drone risk assessments and airspace monitoring. Working with specialist partners including AeroSentry Patrol, we integrate portable drone detection systems capable of identifying nearby drone activity, locating operators and providing real-time airspace awareness."],
+      items:["Autonomous drone patrol — DJI Dock 3","Drone docking and automatic recharging","Scheduled or alarm-triggered aerial surveillance","Thermal and low-light imaging","Counter-drone detection and identification","Pilot geolocation","Temporary event deployments","Estate and residential airspace monitoring","Integration with on-site security teams","Security technology advisory and coordination"]}
+  },
+  sy:{num:"04 — SUPERYACHT SECURITY",tit:"Superyacht<br><em>Security.</em>",tag:"Specialist security support for private vessels and maritime environments. From crew vetting to on-board security — across the Mediterranean and beyond.",
+    caps:[
+      {tit:"On-Board Security",desc:"Discreet security presence on board for owner voyages and private events — fully integrated into vessel operations, crew structure and guest experience.",items:["Owner, guest and event security","Low-profile integration with crew","On-board event coordination","Emergency and medical protocols"]},
+      {tit:"Ashore Coordination",desc:"Ground-level security coordination for shore visits, restaurant evenings, marina events and private gatherings — seamlessly extended from the vessel.",items:["Shore excursion advance work","Restaurant and venue security","Marina and quayside coordination","Liaison with local security assets"]},
+      {tit:"Crew Vetting",desc:"Comprehensive background verification for all crew members before they join the vessel.",items:["Identity and qualification verification","Criminal record checks","Reference and employment history","Ongoing monitoring available"]},
+      {tit:"Anti-Paparazzi & Counter-Surveillance",desc:"Comprehensive privacy protection on board and ashore — combining physical counter-surveillance, drone detection and media management.",items:["Physical counter-surveillance on deck and ashore","Drone detection and monitoring","Marina and anchorage privacy management","Identification of known press and paparazzi presence","Coordination with PR and communications teams"]}
+    ],
+    extra:{title:"Drone Security",
+      paras:["For superyachts at anchor or in marina, Orbit Group integrates autonomous drone surveillance using the DJI Dock 3 — enabling scheduled perimeter patrols around the vessel and immediate alarm-triggered responses without requiring an on-site pilot. Ideal for extended anchorages or high-profile events on board.","We also provide counter-drone detection and airspace monitoring to protect owner privacy and vessel security. Working with specialist partners including AeroSentry Patrol, we deploy portable systems capable of identifying nearby drone activity, locating operators and delivering real-time airspace awareness to the security team."],
+      items:["Autonomous drone patrol around the vessel — DJI Dock 3","Scheduled or alarm-triggered aerial surveillance","Thermal and low-light imaging","Counter-drone detection and identification","Pilot geolocation","Marina and anchorage airspace monitoring","Anti-paparazzi drone surveillance","Temporary event deployments","Integration with on-board security team","Security technology advisory and coordination"]}
+  }
+};
+
+function fleetCard(label,price,sub,desc,items,badge,gold){
+  var cls=gold?"fleet-card gold":"fleet-card";
+  var bdg=badge?'<div class="fleet-badge">'+badge+"</div>":'';
+  var lis=items.map(function(i){return"<li>"+i+"</li>";}).join('');
+  return'<div class="'+cls+'">'+bdg+'<div class="fleet-label">'+label+'</div><div class="fleet-price">'+price+'</div><div class="fleet-sub">'+sub+'</div><div class="fleet-desc">'+desc+'</div><ul class="fleet-li">'+lis+'</ul></div>';
+}
+function fleetVehicle(ico,name,sub,desc,t1,t2){
+  return'<div class="fleet-wrap"><div class="dstitle">Fleet — '+name+'</div><div class="fleet-grid"><div class="fleet-head"><div style="display:flex;align-items:center;gap:14px;margin-bottom:12px"><span style="font-size:22px">'+ico+'</span><div><div style="font-family:Fraunces,serif;font-size:18px;font-weight:400;color:var(--iv)">'+name+'</div><div style="font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-top:3px">'+sub+'</div></div></div><p style="font-size:13px;font-weight:300;line-height:1.75;color:var(--mu)">'+desc+'</p></div>'+t1+t2+'</div><p class="fleet-note">All rates include VAT. Rates applicable for London operations. Contact us for bespoke quotations.</p></div>';
+}
+function buildFleet(){
+  var m=fleetVehicle("🚐","Mercedes-Benz V-Class &amp; S-Class","Executive Configuration · London","The Mercedes V-Class Executive and S-Class are our flagship vehicles for London operations. The V-Class accommodates up to 6 passengers; the S-Class offers a refined experience for solo principals. Both feature tinted windows, leather seating and climate control, driven by security-trained chauffeurs.",
+    fleetCard("Airport Transfer","£200","per transfer","Heathrow to Central London. Meet &amp; greet and flight monitoring included.",["All London airports covered","Real-time flight tracking","Meet &amp; greet in arrivals","Luggage assistance included"],"",false),
+    fleetCard("Daily Hire","£800","10 hours of service","Full day hire with dedicated security-trained chauffeur.",["10 hours of dedicated service","Unlimited stops within zone","Route planning included","CPO integration available"],"Most Popular",true));
+  var rr=fleetVehicle("👑","Rolls-Royce Ghost","Ultra-Premium · London","The Rolls-Royce Ghost represents the pinnacle of private ground transportation. Starlight headliner, bespoke leather interior and whisper-quiet ride quality — driven by our most senior security-trained chauffeurs.",
+    fleetCard("Airport Transfer","£900","per transfer","Heathrow to Central London. White-glove meet &amp; greet and full luggage coordination.",["All London airports covered","Real-time flight tracking","White-glove meet &amp; greet","Senior chauffeur assigned"],"",false),
+    fleetCard("Daily Hire","£2,200","10 hours of service","The ultimate solution for principals requiring the finest in private ground transportation.",["10 hours of dedicated service","Senior security-trained chauffeur","Unlimited stops within zone","CPO integration available"],"Premium",true));
+  var rrv=fleetVehicle("🏔","Range Rover Autobiography","Executive SUV · London","The Range Rover Autobiography combines commanding presence with exceptional refinement. Autobiography-grade interior, massaging seats, panoramic roof and all-terrain capability, driven by security-trained chauffeurs.",
+    fleetCard("Airport Transfer","£350","per transfer","Heathrow to Central London. Meet &amp; greet and luggage coordination included.",["All London airports covered","Real-time flight tracking","Meet &amp; greet in arrivals","Security-trained chauffeur"],"",false),
+    fleetCard("Daily Hire","£1,100","10 hours of service","Ideal for private estate visits, multi-stop programmes and out-of-city operations.",["10 hours of dedicated service","Security-trained chauffeur","Unlimited stops within zone","CPO integration available"],"Most Popular",true));
+  return m+rr+rrv;
+}
+
+function openMob(){document.getElementById("mob-menu").classList.add("open");document.body.style.overflow="hidden";}
+function closeMob(){document.getElementById("mob-menu").classList.remove("open");document.body.style.overflow="";}
+
+  var s=SVC[key];
+  if(!s) return;
+  document.getElementById("dnum").innerHTML=s.num;
+  document.getElementById("dtit").innerHTML=s.tit;
+  document.getElementById("dtag").innerHTML=s.tag;
+  var h="";
+  for(var i=0;i<s.caps.length;i++){
+    var c=s.caps[i];
+    var li="";
+    for(var j=0;j<c.items.length;j++){li+="<li>"+c.items[j]+"</li>";}
+    h+='<div class="cap"><div class="ctit">'+c.tit+'</div><p class="cdesc">'+c.desc+'</p><ul class="clist">'+li+"</ul></div>";
+  }
+  document.getElementById("capgrid").innerHTML=h;
+  var es=document.getElementById("extra-section");
+  if(s.extra){
+    var ps=s.extra.paras.map(function(p){return'<p style="font-size:14px;font-weight:300;line-height:1.85;color:var(--mu);margin-bottom:16px">'+p+"</p>";}).join('');
+    var els=s.extra.items.map(function(i){return'<li style="font-size:13px;font-weight:300;color:var(--mu);display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--br)"><span style="color:var(--g);font-family:JetBrains Mono,monospace;font-size:10px;flex-shrink:0;margin-top:2px">—</span>'+i+"</li>";}).join('');
+    es.innerHTML='<div style="margin-bottom:56px"><div style="font-family:Fraunces,serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--iv);margin-bottom:32px;line-height:1.1">'+s.extra.title+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br)"><div style="background:#111;padding:32px 28px;border:1px solid rgba(255,255,255,.04)">'+ps+'</div><div style="background:#111;padding:32px 28px;border:1px solid rgba(255,255,255,.04)"><div style="font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:20px;display:flex;align-items:center;gap:10px"><span style="width:22px;height:1px;background:var(--g);display:block"></span>Capabilities</div><ul style="list-style:none">'+els+"</ul></div></div></div>";
+  } else {
+    es.innerHTML="";
+  }
+  var fs=document.getElementById("fleet-section");
+  fs.innerHTML=(key==="sd")?buildFleet():"";
+  document.getElementById("main").className="pg";
+  document.getElementById("det").className="pg on";
+  document.getElementById("network").className="pg";
+  window.scrollTo(0,0);
+}
+
+function goMain(){
+  document.getElementById("det").className="pg";
+  document.getElementById("network").className="pg";
+  document.getElementById("main").className="pg on";
+  window.scrollTo(0,0);
+}
+function showNetwork(){
+  document.getElementById("main").className="pg";
+  document.getElementById("det").className="pg";
+  document.getElementById("network").className="pg on";
+  window.scrollTo(0,0);
+}
+function sc(id){
+  setTimeout(function(){var el=document.getElementById(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-62,behavior:"smooth"});},50);
+}
+function subForm(){var c=document.getElementById("conf");c.style.display="block";setTimeout(function(){c.style.display="none";},5000);}
+function subNetwork(){var c=document.getElementById("conf-net");c.style.display="block";setTimeout(function(){c.style.display="none";},5000);}
+window.addEventListener("scroll",function(){
+  document.getElementById("nav").className=window.scrollY>40?"sc":"";
+  var cards=document.querySelectorAll(".wc");
+  var delays=[0,150,300,450];
+  for(var i=0;i<cards.length;i++){
+    if(cards[i].getBoundingClientRect().top<window.innerHeight-80&&!cards[i].classList.contains("vis")){
+      (function(card,d){setTimeout(function(){card.classList.add("vis");},d);})(cards[i],delays[i]||0);
+    }
+  }
+});
+</script>
+</body>
+</html>
