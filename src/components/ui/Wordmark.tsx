@@ -23,7 +23,7 @@ export function Wordmark({ className = "", tagline = false, size = "md" }: Wordm
         aria-label="Orbit Group"
       >
         <span className="text-white">ORBIT</span>{" "}
-        <span className="text-accent-bright">GROUP</span>
+        <span className="text-accent-label">GROUP</span>
       </span>
       {tagline ? (
         <span className="tracked-caps mt-2 text-[0.6rem] font-medium text-white/60 sm:text-xs">

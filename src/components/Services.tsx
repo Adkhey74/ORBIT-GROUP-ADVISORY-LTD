@@ -13,34 +13,61 @@ const icons: Record<string, LucideIcon> = {
   "superyacht-security": Anchor,
 };
 
-function Collage({ images, title }: { images: string[]; title: string }) {
-  const alt = `${title} — Orbit Group`;
-  const fill = { alt, label: title, ratio: "", className: "h-full w-full" } as const;
+/* A single landscape photo card with a lift shadow (used inside the collage). */
+function Photo({
+  src,
+  title,
+  className,
+  ratio = "aspect-[4/3]",
+}: {
+  src: string;
+  title: string;
+  className?: string;
+  ratio?: string;
+}) {
+  return (
+    <div className={`shadow-2xl shadow-black/60 ${className ?? ""}`}>
+      <AssetImage
+        src={src}
+        alt={`${title} — Orbit Group`}
+        label={title}
+        ratio={ratio}
+        sizes="(max-width: 1024px) 55vw, 32vw"
+      />
+    </div>
+  );
+}
 
-  // Three images: one tall left + two stacked right, inside a bounded 4/3 box.
+/**
+ * Staggered, overlapping photo collage. Frames are landscape (aspect-[4/3])
+ * so the (landscape) source photos are shown with minimal cropping, while the
+ * offset overlap keeps the block compact and editorial.
+ */
+function Collage({ images, title }: { images: string[]; title: string }) {
+  // Three photos: one wide on top + two side by side below (clean, minimal crop).
   if (images.length >= 3) {
     return (
-      <div className="grid aspect-[4/3] grid-cols-2 grid-rows-2 gap-3">
-        <div className="relative row-span-2">
-          <AssetImage src={images[0]} {...fill} sizes="(max-width:1024px) 60vw, 30vw" />
+      <div className="grid gap-3">
+        <Photo src={images[0]} title={title} ratio="aspect-[16/10]" className="w-full" />
+        <div className="grid grid-cols-2 gap-3">
+          <Photo src={images[1]} title={title} />
+          <Photo src={images[2]} title={title} />
         </div>
-        <AssetImage src={images[1]} {...fill} sizes="(max-width:1024px) 30vw, 15vw" />
-        <AssetImage src={images[2]} {...fill} sizes="(max-width:1024px) 30vw, 15vw" />
       </div>
     );
   }
 
-  // Two images: side by side (portraits) forming a compact landscape block.
+  // Two photos: top-left + overlapping bottom-right.
   if (images.length === 2) {
     return (
-      <div className="grid grid-cols-2 gap-3">
-        <AssetImage src={images[0]} alt={alt} label={title} ratio="aspect-[3/4]" sizes="(max-width:1024px) 50vw, 25vw" />
-        <AssetImage src={images[1]} alt={alt} label={title} ratio="aspect-[3/4]" sizes="(max-width:1024px) 50vw, 25vw" />
+      <div className="relative aspect-[5/4] w-full">
+        <Photo src={images[0]} title={title} className="absolute left-0 top-0 w-[64%]" />
+        <Photo src={images[1]} title={title} className="absolute bottom-0 right-0 w-[60%]" />
       </div>
     );
   }
 
-  return <AssetImage src={images[0]} alt={alt} label={title} ratio="aspect-[4/3]" sizes="(max-width:1024px) 100vw, 50vw" />;
+  return <Photo src={images[0]} title={title} className="w-full" />;
 }
 
 function ServiceRow({ service, index }: { service: Service; index: number }) {
@@ -51,7 +78,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
     <div>
       <Reveal>
         <div className="flex items-center gap-3">
-          <span className="text-xs font-semibold tracking-[0.2em] text-accent-bright">
+          <span className="text-xs font-semibold tracking-[0.2em] text-accent-label">
             {service.num}
           </span>
           {Icon ? <Icon className="h-6 w-6 text-white/30" strokeWidth={1.5} aria-hidden /> : null}
@@ -76,7 +103,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
 
       {service.note ? (
         <Reveal delay={120}>
-          <p className="mt-6 border-t border-white/10 pt-4 text-xs uppercase tracking-[0.12em] text-white/40">
+          <p className="mt-6 border-t border-white/10 pt-4 text-xs uppercase tracking-[0.12em] text-white/55">
             {service.note}
           </p>
         </Reveal>

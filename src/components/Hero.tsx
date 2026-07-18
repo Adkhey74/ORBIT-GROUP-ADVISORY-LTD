@@ -56,7 +56,7 @@ export function Hero() {
       <a
         href="#about"
         aria-label="Scroll to content"
-        className="absolute bottom-20 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/50 transition-colors hover:text-white sm:flex"
+        className="absolute bottom-20 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/65 transition-colors hover:text-white sm:flex"
       >
         <span className="text-[9px] font-semibold uppercase tracking-[0.3em]">Scroll</span>
         <span className="relative h-10 w-px overflow-hidden bg-white/20">
@@ -69,7 +69,7 @@ export function Hero() {
         <Marquee
           items={hero.ticker.map((t) => t)}
           duration={24}
-          itemClassName="px-7 text-[10px] uppercase tracking-[0.2em] text-white/40"
+          itemClassName="px-7 text-[10px] uppercase tracking-[0.2em] text-white/55"
         />
       </div>
     </section>

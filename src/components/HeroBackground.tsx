@@ -19,6 +19,10 @@ export function HeroBackground({ src }: { src: string }) {
           alt=""
           fill
           priority
+          // The source webp is already tiny (~36KB) and well-sized. Serving it
+          // directly (unoptimized) skips Vercel's on-demand optimization round-
+          // trip, which otherwise inflates first-load LCP for this hero image.
+          unoptimized
           sizes="100vw"
           className="object-cover object-[62%_28%]"
           onError={() => setFailed(true)}

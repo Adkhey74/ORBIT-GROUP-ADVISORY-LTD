@@ -33,7 +33,8 @@ export function Marquee({
     ));
 
   return (
-    <div className={`overflow-hidden ${className}`}>
+    // Decorative, looping content (rendered twice) — hidden from assistive tech.
+    <div aria-hidden className={`overflow-hidden ${className}`}>
       <div
         className="animate-marquee flex w-max whitespace-nowrap"
         style={{ animationDuration: `${duration}s` }}

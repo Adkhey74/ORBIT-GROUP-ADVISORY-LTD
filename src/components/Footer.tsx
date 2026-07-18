@@ -23,7 +23,7 @@ export function Footer() {
 
           {columns.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
+              <h4 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55">
                 {col.heading}
               </h4>
               <ul className="mt-4 space-y-2">
@@ -37,7 +37,7 @@ export function Footer() {
           ))}
 
           <div>
-            <h4 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
+            <h4 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55">
               Contact
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
@@ -57,17 +57,17 @@ export function Footer() {
                   {company.phone}
                 </a>
               </li>
-              <li className="pt-1 text-xs text-white/35">By appointment only</li>
+              <li className="pt-1 text-xs text-white/55">By appointment only</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/35">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-white/55">
             © {year} {company.legalName} · Registered in {company.registeredIn} · Company
             No. {company.registrationNumber}
           </span>
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/35">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-white/55">
             {footer.note}
           </span>
         </div>

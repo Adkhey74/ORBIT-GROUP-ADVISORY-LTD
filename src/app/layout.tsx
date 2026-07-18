@@ -19,11 +19,11 @@ const sans = Inter({
   display: "swap",
 });
 
-/* Geometric, rounded — closest match to the ORBIT wordmark */
+/* Geometric, rounded — closest match to the ORBIT wordmark (only 900 is used) */
 const wordmark = Orbitron({
   variable: "--ff-wordmark",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["900"],
   display: "swap",
 });
 

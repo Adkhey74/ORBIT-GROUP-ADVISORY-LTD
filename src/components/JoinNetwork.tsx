@@ -40,7 +40,7 @@ export function JoinNetwork() {
 
           <Reveal delay={80}>
             <div className="mt-8">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
                 Profiles we look for
               </p>
               <ul className="mt-4 flex flex-wrap gap-2">
@@ -75,7 +75,7 @@ export function JoinNetwork() {
               >
                 {network.cta}
               </a>
-              <p className="mt-4 text-xs italic text-white/35">{network.note}</p>
+              <p className="mt-4 text-xs italic text-white/55">{network.note}</p>
             </div>
           </Reveal>
         </div>

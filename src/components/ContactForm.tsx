@@ -10,9 +10,9 @@ import { contactSchema, type ContactInput } from "@/lib/contactSchema";
 type Status = "idle" | "success" | "error";
 
 const fieldClass =
-  "w-full border border-white/15 bg-white/[0.03] px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-accent-bright";
+  "w-full border border-white/15 bg-white/[0.03] px-3.5 py-2.5 text-sm text-white placeholder:text-white/50 outline-none transition-colors focus:border-accent-bright";
 const labelClass =
-  "mb-2 block text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50";
+  "mb-2 block text-[10px] font-semibold uppercase tracking-[0.15em] text-white/70";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -64,7 +64,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-xs font-semibold uppercase tracking-[0.15em] text-accent-bright hover:underline"
+          className="mt-6 text-xs font-semibold uppercase tracking-[0.15em] text-accent-label hover:underline"
         >
           Send another enquiry
         </button>
@@ -142,7 +142,7 @@ export function ContactForm() {
         {isSubmitting ? "Sending…" : "Submit Enquiry"}
       </button>
 
-      <p className="text-[11px] italic text-white/35">
+      <p className="text-[11px] italic text-white/55">
         {site.company.legalName} · Registered in {site.company.registeredIn} · Co. No.{" "}
         {site.company.registrationNumber}
       </p>

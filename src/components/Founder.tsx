@@ -28,7 +28,7 @@ export function Founder() {
               <p className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
                 {founder.profile.name}
               </p>
-              <p className="mt-1 text-sm font-semibold text-accent-bright">
+              <p className="mt-1 text-sm font-semibold text-accent-label">
                 {founder.profile.role}
               </p>
             </figcaption>

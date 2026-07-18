@@ -29,7 +29,7 @@ export function WhyOrbit() {
             delay={(i % 2) * 80}
             className="bg-ink-soft p-7 transition-colors hover:bg-[#17171d] sm:p-9"
           >
-            <div className="text-xs font-semibold tracking-[0.2em] text-accent-bright">
+            <div className="text-xs font-semibold tracking-[0.2em] text-accent-label">
               {card.num} —
             </div>
             <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-white sm:text-2xl">

@@ -51,7 +51,7 @@ export function Header() {
             ))}
             <a
               href="#contact"
-              className="border border-accent-bright/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-accent-bright transition-colors hover:bg-accent-bright hover:text-white"
+              className="border border-accent-bright/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-accent-label transition-colors hover:bg-accent-bright hover:text-white"
             >
               Confidential Enquiry
             </a>
@@ -114,7 +114,7 @@ export function Header() {
         >
           Confidential Enquiry
         </a>
-        <div className="mt-6 space-y-1 text-center text-xs text-white/50">
+        <div className="mt-6 space-y-1 text-center text-xs text-white/70">
           <a href={`mailto:${site.company.email}`} className="block hover:text-white">
             {site.company.email}
           </a>

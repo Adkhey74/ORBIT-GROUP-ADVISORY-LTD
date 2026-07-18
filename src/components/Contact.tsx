@@ -45,7 +45,7 @@ export function Contact() {
                     aria-hidden
                   />
                   <div>
-                    <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+                    <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
                       {item.label}
                     </dt>
                     <dd className="mt-1 text-sm text-white/85">

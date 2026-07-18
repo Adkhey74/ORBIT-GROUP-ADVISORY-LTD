@@ -4,7 +4,7 @@ import { Label } from "./ui/Label";
 import { Heading } from "./ui/Heading";
 import { Reveal } from "./ui/Reveal";
 import { Marquee } from "./ui/Marquee";
-import { EuropeMap } from "./EuropeMap";
+import { EuropeMapClient } from "./EuropeMapClient";
 
 export function EuropeanCoverage() {
   const { coverage } = site;
@@ -29,7 +29,7 @@ export function EuropeanCoverage() {
             {/* Violet glow behind the map */}
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-3xl" />
             <div className="relative px-2 py-4 sm:px-6 sm:py-6">
-              <EuropeMap />
+              <EuropeMapClient />
             </div>
           </div>
 

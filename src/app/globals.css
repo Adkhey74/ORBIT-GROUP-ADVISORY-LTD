@@ -14,7 +14,8 @@
   --color-paper-soft: #f4f4f6; /* subtle light surfaces */
 
   --color-accent: #5b21e6; /* electric violet */
-  --color-accent-bright: #7c3aed; /* hover / highlight */
+  --color-accent-bright: #7c3aed; /* hover / highlight / large headings */
+  --color-accent-label: #8b5cf6; /* small violet text — AA-contrast on dark */
   --color-accent-soft: #a78bfa; /* muted violet on dark */
 
   --color-silver: #d8d8de;
