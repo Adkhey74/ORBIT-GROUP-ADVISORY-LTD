@@ -10,9 +10,23 @@ export function Founder() {
 
   return (
     <Section variant="soft-dark">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
-        {/* Portrait — image first on mobile, left on desktop */}
-        <Reveal className="order-1">
+      {/*
+        Mobile order: title -> image -> text.
+        Desktop: image on the left column; title (top) + text (bottom) on the right.
+      */}
+      <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-x-16">
+        {/* Title */}
+        <Reveal className="order-1 lg:col-start-2 lg:row-start-1 lg:self-end">
+          <Label>{founder.label}</Label>
+          <Heading
+            lead={founder.titleLead}
+            emphasis={founder.titleEmphasis}
+            className="mt-4 text-3xl sm:text-4xl lg:text-5xl"
+          />
+        </Reveal>
+
+        {/* Portrait */}
+        <Reveal className="order-2 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center">
           <figure className="overflow-hidden rounded-2xl border border-white/10 bg-ink">
             <AssetImage
               src={founder.profile.image}
@@ -36,15 +50,9 @@ export function Founder() {
         </Reveal>
 
         {/* Text */}
-        <div className="order-2">
+        <div className="order-3 lg:col-start-2 lg:row-start-2 lg:self-start">
           <Reveal>
-            <Label>{founder.label}</Label>
-            <Heading
-              lead={founder.titleLead}
-              emphasis={founder.titleEmphasis}
-              className="mt-4 text-3xl sm:text-4xl lg:text-5xl"
-            />
-            <p className="mt-6 text-sm leading-relaxed text-white/65 sm:text-base">
+            <p className="text-sm leading-relaxed text-white/65 sm:text-base">
               {founder.profile.bio}
             </p>
           </Reveal>
