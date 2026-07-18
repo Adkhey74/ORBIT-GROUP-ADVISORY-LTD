@@ -5,15 +5,23 @@ import Lenis from "lenis";
 import { MotionConfig } from "motion/react";
 
 /**
- * App-level providers:
- *  - Lenis inertial smooth scrolling (disabled for prefers-reduced-motion)
- *  - In-page anchor links routed through Lenis with a sticky-header offset
- *  - MotionConfig so motion animations honour the user's reduced-motion setting
+ * App-level providers.
+ *
+ * Lenis inertial smooth-scroll is applied on DESKTOP (fine pointer) only.
+ * On touch devices it's skipped: native mobile scrolling is smoother and
+ * GPU-accelerated, whereas Lenis' JS scroll loop causes lag on mobile.
+ * It's also skipped for prefers-reduced-motion.
  */
 export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+    // Mobile / touch / reduced-motion → native scroll (CSS scroll-padding-top
+    // handles the sticky-header anchor offset). No Lenis, no RAF loop.
+    if (reduce || coarsePointer) {
+      return;
+    }
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -27,9 +35,7 @@ export function Providers({ children }: { children: ReactNode }) {
     };
     frame = requestAnimationFrame(raf);
 
-    // Sticky header height — sections should land just beneath it.
     const HEADER_OFFSET = 62;
-
     const onAnchorClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
       const anchor = target?.closest('a[href^="#"]') as HTMLAnchorElement | null;
@@ -39,7 +45,6 @@ export function Providers({ children }: { children: ReactNode }) {
       const el = document.querySelector<HTMLElement>(id);
       if (!el) return;
       event.preventDefault();
-      // Deterministic absolute target: element top in the document, minus header.
       const y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
       lenis.scrollTo(Math.max(0, y), { duration: 1.1 });
     };
