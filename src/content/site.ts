@@ -51,7 +51,7 @@ export const site = {
       "Orbit Group is a trusted European security and mobility partner providing bespoke solutions for family offices, principals and corporate executives — delivered with discretion and operational precision.",
     ctaPrimary: "Submit a Confidential Enquiry",
     ctaSecondary: "Our Services",
-    image: "/images/5.png",
+    image: "/images/5.webp",
     // Scrolling ticker coordinates
     ticker: [
       "LON 51.5074° N / 0.1278° W",
@@ -99,7 +99,7 @@ export const site = {
           "Security coordination",
           "Protective intelligence",
         ],
-        images: ["/images/4.png", "/images/11.png"],
+        images: ["/images/4.webp", "/images/11.webp"],
       },
       {
         id: "executive-chauffeur",
@@ -116,7 +116,7 @@ export const site = {
           "High-risk mobility on request",
         ],
         note: "Fleet — Mercedes V / S / G-Class · Rolls-Royce Ghost · Range Rover Autobiography · BMW 7 Series",
-        images: ["/images/1.png", "/images/8.png"],
+        images: ["/images/1.webp", "/images/8.webp"],
       },
       {
         id: "residential-security",
@@ -132,7 +132,7 @@ export const site = {
           "Seasonal & vacation security",
           "Drone surveillance & counter-drone",
         ],
-        images: ["/images/2.png", "/images/12.png"],
+        images: ["/images/2.webp", "/images/12.webp"],
       },
       {
         id: "superyacht-security",
@@ -148,7 +148,7 @@ export const site = {
           "Crew vetting",
           "Anti-paparazzi & counter-surveillance",
         ],
-        images: ["/images/7.png", "/images/8.png", "/images/10.png"],
+        images: ["/images/7.webp", "/images/8.webp", "/images/10.webp"],
       },
     ] as Service[],
   },
@@ -202,7 +202,7 @@ export const site = {
       name: "Franck Milla",
       role: "Managing Director",
       bio: "Orbit Group was founded by Franck Milla following a career spanning French Special Forces, French Law Enforcement, Diplomatic Protection and Executive Protection for family offices and ultra-high-net-worth principals across Europe.",
-      image: "/images/6.png",
+      image: "/images/6.webp",
     },
     credentials: [
       "French Special Forces",
@@ -237,7 +237,7 @@ export const site = {
     titleEmphasis: "of operators.",
     intro:
       "Orbit Group operates through a deliberately small network of vetted close protection officers, security drivers, maritime specialists and local partners — deployed on UHNW mandates across Europe. If you operate at the level we require, we want to hear from you.",
-    image: "/images/3.png",
+    image: "/images/3.webp",
     profiles: [
       "Close Protection Officers",
       "Security Drivers & Chauffeurs",

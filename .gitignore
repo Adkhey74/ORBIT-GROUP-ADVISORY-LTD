@@ -43,3 +43,6 @@ next-env.d.ts
 # local diagnostic scripts & source docs
 _*.js
 *.pdf
+
+# original (unoptimized) source images kept locally, not deployed
+/original-images
