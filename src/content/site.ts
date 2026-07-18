@@ -19,7 +19,7 @@ export type Service = {
 export const site = {
   meta: {
     description:
-      "Orbit Group is a trusted European security and mobility partner — executive protection, executive chauffeur, residential and superyacht security for family offices, principals and corporate executives. Discreet, founder-led, operationally precise.",
+      "Orbit Group is a European executive security and mobility consultancy — executive protection, secure transportation and executive chauffeurs, residential and estate security, superyacht and private aviation security, risk management and travel security for family offices, UHNWIs and corporate executives across London, Paris, Geneva, Monaco, the French Riviera, Saint-Tropez and Ibiza.",
   },
 
   company: {
@@ -58,6 +58,7 @@ export const site = {
       "PAR 48.8566° N / 2.3522° E",
       "GVA 46.2044° N / 6.1432° E",
       "NICE 43.7102° N / 7.2620° E",
+      "STR 43.2677° N / 6.6407° E",
       "MCO 43.7384° N / 7.4246° E",
     ],
   },
@@ -67,7 +68,7 @@ export const site = {
     titleLead: "Independent",
     titleEmphasis: "by design.",
     paragraphs: [
-      "Orbit Group is an independent security consultancy supporting family offices, private offices and executive leadership across the UK and Europe.",
+      "Orbit Group is an independent executive security consultancy supporting family offices, private offices, corporate security teams and executive leadership across the UK and Europe.",
       "We provide discreet security advisory, executive mobility and operational coordination through a deliberately selective model — from secure ground transportation and executive drivers to residential security and trusted local partners.",
       "Rather than operating as a traditional security company, we act as a trusted extension of the private office — coordinating people, logistics and security with consistency, discretion and direct senior oversight.",
       "Our approach is built on operational discipline, long-term relationships and the belief that the best security is measured not by its visibility, but by the confidence it provides.",
@@ -75,7 +76,7 @@ export const site = {
     stats: [
       { value: "15+", label: "Years of Operational Experience" },
       { value: "100+", label: "Protection Operations" },
-      { value: "6", label: "European Operational Bases" },
+      { value: "7", label: "European Operational Bases" },
       { value: "24/7", label: "Operational Availability" },
     ],
   },
@@ -94,8 +95,9 @@ export const site = {
           "Discreet, operationally trained close protection built around the specific threat profile — not a generic template.",
         capabilities: [
           "Close protection teams",
+          "Risk assessment & risk management",
           "Advance planning & journey management",
-          "Venue & route assessments",
+          "Travel security & venue assessments",
           "Security coordination",
           "Protective intelligence",
         ],
@@ -105,15 +107,16 @@ export const site = {
         id: "executive-chauffeur",
         num: "02",
         title: "Executive Chauffeur",
-        tagline: "More than transportation.",
+        tagline: "More than transportation — secure, VIP-grade mobility.",
         intro:
-          "Vetted, protectively-trained chauffeurs combining executive-level service with close protection awareness. Every journey is a security operation conducted without friction.",
+          "Vetted, protectively-trained security drivers and executive chauffeurs combining executive-level service with close protection awareness. Every journey is a secure transportation operation conducted without friction.",
         capabilities: [
+          "VIP secure transportation",
           "Protective & defensive driving",
-          "Airport & FBO protocols",
+          "Airport meet & greet & FBO protocols",
+          "Executive travel support",
           "Multi-vehicle coordination",
           "European driver network",
-          "High-risk mobility on request",
         ],
         note: "Fleet — Mercedes V / S / G-Class · Rolls-Royce Ghost · Range Rover Autobiography · BMW 7 Series",
         images: ["/images/1.webp", "/images/8.webp"],
@@ -138,13 +141,14 @@ export const site = {
         id: "superyacht-security",
         num: "04",
         title: "Superyacht & Aviation",
-        tagline: "Supporting owners, captains and management companies.",
+        tagline: "Yacht security services and executive aviation support.",
         intro:
-          "Specialist shore-side and on-board security support for private vessels, plus discreet private-aviation coordination across the Mediterranean and beyond.",
+          "Specialist superyacht security — shore-side and on-board support for private vessels — plus business and private aviation security and executive aviation support across the Mediterranean and beyond.",
         capabilities: [
-          "On-board & shore-side protection",
+          "On-board & shore-side yacht security",
           "Port & marina coordination",
-          "Private aviation coordination",
+          "Business & private aviation security",
+          "Executive aviation support",
           "Crew vetting",
           "Anti-paparazzi & counter-surveillance",
         ],
@@ -225,6 +229,7 @@ export const site = {
       "Paris — France",
       "Geneva — Switzerland",
       "Côte d'Azur — French Riviera",
+      "Saint-Tropez — French Riviera",
       "Monaco",
       "Ibiza — Balearic Islands",
     ],
@@ -272,7 +277,7 @@ export const site = {
   footer: {
     tagline:
       "Strategic security advisory, executive mobility and operational coordination for private clients across Europe.",
-    offices: ["London", "Paris", "Geneva", "French Riviera", "Monaco", "Ibiza"],
+    offices: ["London", "Paris", "Geneva", "French Riviera", "Saint-Tropez", "Monaco", "Ibiza"],
     divisions: [
       "Orbit Intelligence",
       "Orbit Advisory",
