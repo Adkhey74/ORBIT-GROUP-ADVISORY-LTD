@@ -11,8 +11,8 @@ export function Founder() {
   return (
     <Section variant="soft-dark">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
-        {/* Portrait */}
-        <Reveal className="order-2 lg:order-1">
+        {/* Portrait — image first on mobile, left on desktop */}
+        <Reveal className="order-1">
           <figure className="overflow-hidden rounded-2xl border border-white/10 bg-ink">
             <AssetImage
               src={founder.profile.image}
@@ -36,7 +36,7 @@ export function Founder() {
         </Reveal>
 
         {/* Text */}
-        <div className="order-1 lg:order-2">
+        <div className="order-2">
           <Reveal>
             <Label>{founder.label}</Label>
             <Heading

@@ -12,8 +12,8 @@ export function JoinNetwork() {
   return (
     <Section id="network" variant="dark">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Image */}
-        <Reveal className="order-2 lg:order-1">
+        {/* Image — first on mobile, left on desktop */}
+        <Reveal className="order-1">
           <AssetImage
             src={network.image}
             alt="Join the Orbit Group network of operators"
@@ -25,7 +25,7 @@ export function JoinNetwork() {
         </Reveal>
 
         {/* Text */}
-        <div className="order-1 lg:order-2">
+        <div className="order-2">
           <Reveal>
             <Label>{network.label}</Label>
             <Heading

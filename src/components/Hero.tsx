@@ -21,7 +21,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black uppercase leading-[0.9] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl xl:text-[68px]">
+            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black uppercase leading-[0.9] tracking-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl xl:text-[68px]">
               {hero.titleLead}{" "}
               <span className="text-accent-bright">{hero.titleEmphasis}</span>
             </h1>
@@ -43,7 +43,7 @@ export function Hero() {
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center border border-white/25 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-white backdrop-blur-sm transition-colors hover:border-white/50 hover:bg-white/10"
+                className="inline-flex items-center justify-center border border-white/25 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:border-white/50 hover:bg-white/10 md:backdrop-blur-sm"
               >
                 {hero.ctaSecondary}
               </a>
@@ -65,7 +65,8 @@ export function Hero() {
       </a>
 
       {/* Ticker */}
-      <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10 bg-ink/40 py-3.5 backdrop-blur-sm">
+      {/* backdrop-blur only on md+ — it's an expensive paint op on mobile Safari */}
+      <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10 bg-ink/70 py-3.5 md:bg-ink/40 md:backdrop-blur-sm">
         <Marquee
           items={hero.ticker.map((t) => t)}
           duration={24}

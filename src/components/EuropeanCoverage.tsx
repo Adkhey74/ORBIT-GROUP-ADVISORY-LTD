@@ -27,7 +27,7 @@ export function EuropeanCoverage() {
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d0d]">
           <div className="relative">
             {/* Violet glow behind the map */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-3xl" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(91,33,230,0.15)_0%,transparent_60%)]" />
             <div className="relative px-2 py-4 sm:px-6 sm:py-6">
               <EuropeMapClient />
             </div>

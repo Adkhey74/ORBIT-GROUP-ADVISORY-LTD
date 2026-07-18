@@ -35,8 +35,9 @@ export function HeroBackground({ src }: { src: string }) {
       <div className="absolute inset-0 bg-linear-to-t from-ink from-5% via-transparent to-ink/50" />
       {/* Gentle top fade so the header reads */}
       <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-ink/70 to-transparent" />
-      {/* Subtle violet grade, low-right */}
-      <div className="pointer-events-none absolute -bottom-1/4 right-0 h-[70vh] w-[70vh] rounded-full bg-accent/15 blur-[150px]" />
+      {/* Subtle violet grade, low-right — radial gradient, no GPU blur
+          (large filter:blur causes severe paint lag on iOS Safari) */}
+      <div className="pointer-events-none absolute -bottom-1/4 right-0 h-[110vh] w-[110vh] bg-[radial-gradient(circle,rgba(91,33,230,0.18)_0%,rgba(91,33,230,0.07)_40%,transparent_70%)]" />
     </div>
   );
 }
