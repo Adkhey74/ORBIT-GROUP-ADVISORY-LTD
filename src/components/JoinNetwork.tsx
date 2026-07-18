@@ -11,9 +11,23 @@ export function JoinNetwork() {
 
   return (
     <Section id="network" variant="dark">
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Image — first on mobile, left on desktop */}
-        <Reveal className="order-1">
+      {/*
+        Mobile order: title -> image -> text.
+        Desktop: image on the left column; title (top) + text (bottom) on the right.
+      */}
+      <div className="grid gap-8 lg:grid-cols-2 lg:gap-x-16">
+        {/* Title */}
+        <Reveal className="order-1 lg:col-start-2 lg:row-start-1 lg:self-end">
+          <Label>{network.label}</Label>
+          <Heading
+            lead={network.titleLead}
+            emphasis={network.titleEmphasis}
+            className="mt-4 text-3xl sm:text-4xl lg:text-5xl"
+          />
+        </Reveal>
+
+        {/* Image */}
+        <Reveal className="order-2 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center">
           <AssetImage
             src={network.image}
             alt="Join the Orbit Group network of operators"
@@ -25,15 +39,9 @@ export function JoinNetwork() {
         </Reveal>
 
         {/* Text */}
-        <div className="order-2">
+        <div className="order-3 lg:col-start-2 lg:row-start-2 lg:self-start">
           <Reveal>
-            <Label>{network.label}</Label>
-            <Heading
-              lead={network.titleLead}
-              emphasis={network.titleEmphasis}
-              className="mt-4 text-3xl sm:text-4xl lg:text-5xl"
-            />
-            <p className="mt-6 text-sm leading-relaxed text-white/65 sm:text-base">
+            <p className="text-sm leading-relaxed text-white/65 sm:text-base">
               {network.intro}
             </p>
           </Reveal>
