@@ -2,7 +2,6 @@
 
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
-import { MotionConfig } from "motion/react";
 
 /**
  * App-level providers.
@@ -58,5 +57,5 @@ export function Providers({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+  return <>{children}</>;
 }

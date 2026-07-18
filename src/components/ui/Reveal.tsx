@@ -1,39 +1,82 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { motion, type Variants } from "motion/react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
-  /** Delay in seconds-equivalent ms before the transition starts (for staggering). */
+  /** Delay in ms before the reveal transition starts (for staggering). */
   delay?: number;
   className?: string;
   as?: "div" | "li" | "article" | "section";
 };
 
-const variants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
+type State = "idle" | "hidden" | "shown";
 
 /**
- * Subtle scroll-reveal wrapper powered by motion. Fades + lifts content into
- * view once. Honours prefers-reduced-motion automatically via MotionConfig at
- * the app root; also degrades to visible for no-JS via the SSR fallback.
+ * Progressive scroll-reveal.
+ *
+ * Critically: content is VISIBLE by default (SSR / no-JS / slow-JS) — it is
+ * never hidden waiting for hydration. Only once JS runs do below-the-fold
+ * elements get hidden and then faded/lifted in as they scroll into view.
+ * Elements already in view (e.g. the hero) stay put, no flash.
+ * No animation library — plain CSS transition + IntersectionObserver.
  */
 export function Reveal({ children, delay = 0, className = "", as = "div" }: RevealProps) {
-  const MotionTag = motion[as];
+  const ref = useRef<HTMLElement | null>(null);
+  const [state, setState] = useState<State>("idle");
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setState("shown");
+      return;
+    }
+
+    const rect = node.getBoundingClientRect();
+    const alreadyInView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+    if (alreadyInView) {
+      // Keep it visible with no animation — avoids a flash on above-the-fold content.
+      setState("shown");
+      return;
+    }
+
+    setState("hidden");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setState("shown");
+            observer.disconnect();
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const Tag = as;
+  const hidden = state === "hidden";
+  const animate = state !== "idle";
 
   return (
-    <MotionTag
+    <Tag
+      ref={ref as never}
       className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -8% 0px" }}
-      variants={variants}
-      transition={{ duration: 0.7, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}
+      style={{
+        opacity: hidden ? 0 : 1,
+        transform: hidden ? "translateY(24px)" : "none",
+        transition: animate
+          ? `opacity 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`
+          : undefined,
+        willChange: hidden ? "opacity, transform" : undefined,
+      }}
     >
       {children}
-    </MotionTag>
+    </Tag>
   );
 }
