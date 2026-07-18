@@ -10,8 +10,12 @@ type MarqueeProps = {
 };
 
 /**
- * Infinite horizontal marquee. Renders the item list twice and translates
- * by -50% so the loop is seamless.
+ * Seamless infinite marquee.
+ *
+ * Two identical groups sit side by side and the track translates by -50%
+ * (one group) forever. Each group is forced to at least the viewport width
+ * (`min-w-[100vw]`) with items spread across it, so the band is ALWAYS full —
+ * never a gap, whatever the screen width or number of items.
  */
 export function Marquee({
   items,
@@ -20,27 +24,30 @@ export function Marquee({
   className = "",
   itemClassName = "",
 }: MarqueeProps) {
-  const sequence = (keyPrefix: string) =>
-    items.map((item, i) => (
-      <Fragment key={`${keyPrefix}-${i}`}>
-        <span className={itemClassName}>{item}</span>
-        {separator ? (
-          <span aria-hidden className="text-accent-bright/70">
-            {separator}
-          </span>
-        ) : null}
-      </Fragment>
-    ));
+  const group = (keyPrefix: string) => (
+    <div className="flex min-w-[100vw] shrink-0 items-center justify-around">
+      {items.map((item, i) => (
+        <Fragment key={`${keyPrefix}-${i}`}>
+          <span className={itemClassName}>{item}</span>
+          {separator ? (
+            <span aria-hidden className="text-accent-bright/70">
+              {separator}
+            </span>
+          ) : null}
+        </Fragment>
+      ))}
+    </div>
+  );
 
   return (
-    // Decorative, looping content (rendered twice) — hidden from assistive tech.
+    // Decorative, looping content — hidden from assistive tech.
     <div aria-hidden className={`overflow-hidden ${className}`}>
       <div
-        className="animate-marquee flex w-max whitespace-nowrap"
+        className="animate-marquee flex w-max"
         style={{ animationDuration: `${duration}s` }}
       >
-        {sequence("a")}
-        {sequence("b")}
+        {group("a")}
+        {group("b")}
       </div>
     </div>
   );

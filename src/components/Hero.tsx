@@ -7,6 +7,12 @@ import { HeroBackground } from "./HeroBackground";
 export function Hero() {
   const { hero } = site;
 
+  // Split the title into words for the staggered entrance animation.
+  const titleWords = [
+    ...hero.titleLead.split(" ").map((word) => ({ word, accent: false })),
+    ...hero.titleEmphasis.split(" ").map((word) => ({ word, accent: true })),
+  ];
+
   return (
     <section
       id="top"
@@ -20,12 +26,19 @@ export function Hero() {
             <Label>{hero.eyebrow}</Label>
           </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black uppercase leading-[0.9] tracking-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl xl:text-[68px]">
-              {hero.titleLead}{" "}
-              <span className="text-accent-bright">{hero.titleEmphasis}</span>
-            </h1>
-          </Reveal>
+          <h1 className="mt-6 max-w-4xl font-display text-4xl font-black uppercase leading-[0.9] tracking-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl xl:text-[68px]">
+            {titleWords.map((item, i) => (
+              <span key={i}>
+                <span
+                  className={`hero-word ${item.accent ? "text-accent-bright" : ""}`}
+                  style={{ animationDelay: `${0.15 + i * 0.07}s` }}
+                >
+                  {item.word}
+                </span>
+                {i < titleWords.length - 1 ? " " : null}
+              </span>
+            ))}
+          </h1>
 
           <Reveal delay={160}>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
