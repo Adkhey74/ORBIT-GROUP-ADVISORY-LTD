@@ -4,7 +4,7 @@ import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Industries } from "@/components/Industries";
 import { WhyOrbit } from "@/components/WhyOrbit";
-import { Founder } from "@/components/Founder";
+import { SelectedExperience } from "@/components/SelectedExperience";
 import { EuropeanCoverage } from "@/components/EuropeanCoverage";
 import { JoinNetwork } from "@/components/JoinNetwork";
 import { Contact } from "@/components/Contact";
@@ -21,7 +21,7 @@ export default function Home() {
         <Services />
         <Industries />
         <WhyOrbit />
-        <Founder />
+        <SelectedExperience />
         <EuropeanCoverage />
         <JoinNetwork />
         <Contact />

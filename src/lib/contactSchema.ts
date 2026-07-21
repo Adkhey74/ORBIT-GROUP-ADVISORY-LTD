@@ -5,10 +5,11 @@ import { z } from "zod";
  * and re-validated server-side in the /api/contact route.
  */
 export const contactSchema = z.object({
-  name: z.string().trim().min(1, "Please enter your name.").max(120),
-  organisation: z.string().trim().max(160).optional().or(z.literal("")),
+  fullName: z.string().trim().min(1, "Please enter your full name.").max(120),
+  company: z.string().trim().max(160).optional().or(z.literal("")),
+  country: z.string().trim().max(80).optional().or(z.literal("")),
   email: z.string().trim().email("Please enter a valid email address.").max(200),
-  enquiryType: z.string().trim().max(80).optional().or(z.literal("")),
+  service: z.string().trim().max(80).optional().or(z.literal("")),
   message: z
     .string()
     .trim()

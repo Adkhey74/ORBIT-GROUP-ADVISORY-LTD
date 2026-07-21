@@ -118,7 +118,10 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
   );
 
   return (
-    <div className="grid items-center gap-10 border-t border-white/10 py-12 first:border-t-0 lg:grid-cols-2 lg:gap-16 lg:py-16">
+    <div
+      id={service.id}
+      className="grid scroll-mt-24 items-center gap-10 border-t border-white/10 py-12 first:border-t-0 lg:grid-cols-2 lg:gap-16 lg:py-16"
+    >
       {imageRight ? (
         <>
           {text}

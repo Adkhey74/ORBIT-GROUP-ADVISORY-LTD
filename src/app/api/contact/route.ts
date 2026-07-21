@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: first }, { status: 422 });
   }
 
-  const { name, email, organisation, enquiryType, message } = parsed.data;
+  const { fullName, email, company, country, service, message } = parsed.data;
 
   const apiKey = process.env.BREVO_API_KEY;
   const sender = process.env.BREVO_SENDER_EMAIL;
@@ -39,10 +39,11 @@ export async function POST(request: Request) {
   // Dev fallback: no key configured → log and succeed so the UI can be tested.
   if (!apiKey || !sender) {
     console.info("[contact] Brevo not configured — submission received:", {
-      name,
+      fullName,
       email,
-      organisation,
-      enquiryType,
+      company,
+      country,
+      service,
       message,
     });
     return NextResponse.json({ ok: true, delivered: false });
@@ -50,10 +51,11 @@ export async function POST(request: Request) {
 
   const htmlContent = `
     <h2>New enquiry — Orbit Group website</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+    <p><strong>Full name:</strong> ${escapeHtml(fullName)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    ${organisation ? `<p><strong>Organisation:</strong> ${escapeHtml(organisation)}</p>` : ""}
-    ${enquiryType ? `<p><strong>Nature of enquiry:</strong> ${escapeHtml(enquiryType)}</p>` : ""}
+    ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ""}
+    ${country ? `<p><strong>Country:</strong> ${escapeHtml(country)}</p>` : ""}
+    ${service ? `<p><strong>Service required:</strong> ${escapeHtml(service)}</p>` : ""}
     <p><strong>Message:</strong></p>
     <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
   `;
@@ -69,10 +71,10 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         sender: { name: "Orbit Group Website", email: sender },
         to: [{ email: to }],
-        replyTo: { email, name },
-        subject: enquiryType
-          ? `New enquiry — ${enquiryType} — ${name}`
-          : `New enquiry from ${name}`,
+        replyTo: { email, name: fullName },
+        subject: service
+          ? `New enquiry — ${service} — ${fullName}`
+          : `New enquiry from ${fullName}`,
         htmlContent,
       }),
     });

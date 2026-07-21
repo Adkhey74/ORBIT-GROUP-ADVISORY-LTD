@@ -18,7 +18,7 @@ export function Hero() {
       id="top"
       className="relative isolate flex min-h-dvh flex-col justify-center overflow-hidden bg-ink px-6 pb-24 pt-28 sm:px-8"
     >
-      <HeroBackground src={hero.image} />
+      <HeroBackground src={hero.image} video={hero.video} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="max-w-4xl">

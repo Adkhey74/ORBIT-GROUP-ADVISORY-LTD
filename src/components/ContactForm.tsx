@@ -25,7 +25,7 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { enquiryType: site.contact.enquiryTypes[0] },
+    defaultValues: { service: site.contact.services[0] },
   });
 
   async function onSubmit(values: ContactInput) {
@@ -59,7 +59,7 @@ export function ContactForm() {
         </p>
         <p className="mt-3 text-sm text-white/70">
           Your enquiry has been received, in strict confidence. A member of the team
-          will respond within one business day.
+          will respond within 24 hours.
         </p>
         <button
           type="button"
@@ -84,36 +84,44 @@ export function ContactForm() {
 
       <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className={labelClass}>
-            Name *
+          <label htmlFor="fullName" className={labelClass}>
+            Full Name *
           </label>
-          <input id="name" type="text" autoComplete="name" className={fieldClass} {...register("name")} />
-          {errors.name ? <p className="mt-1 text-xs text-red-400">{errors.name.message}</p> : null}
+          <input id="fullName" type="text" autoComplete="name" className={fieldClass} {...register("fullName")} />
+          {errors.fullName ? <p className="mt-1 text-xs text-red-400">{errors.fullName.message}</p> : null}
         </div>
         <div>
-          <label htmlFor="organisation" className={labelClass}>
-            Organisation
+          <label htmlFor="email" className={labelClass}>
+            Email *
           </label>
-          <input id="organisation" type="text" autoComplete="organization" className={fieldClass} {...register("organisation")} />
+          <input id="email" type="email" autoComplete="email" className={fieldClass} {...register("email")} />
+          {errors.email ? <p className="mt-1 text-xs text-red-400">{errors.email.message}</p> : null}
+        </div>
+      </div>
+
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="company" className={labelClass}>
+            Company
+          </label>
+          <input id="company" type="text" autoComplete="organization" className={fieldClass} {...register("company")} />
+        </div>
+        <div>
+          <label htmlFor="country" className={labelClass}>
+            Country
+          </label>
+          <input id="country" type="text" autoComplete="country-name" className={fieldClass} {...register("country")} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className={labelClass}>
-          Email *
+        <label htmlFor="service" className={labelClass}>
+          Service Required
         </label>
-        <input id="email" type="email" autoComplete="email" className={fieldClass} {...register("email")} />
-        {errors.email ? <p className="mt-1 text-xs text-red-400">{errors.email.message}</p> : null}
-      </div>
-
-      <div>
-        <label htmlFor="enquiryType" className={labelClass}>
-          Nature of Enquiry
-        </label>
-        <select id="enquiryType" className={fieldClass} {...register("enquiryType")}>
-          {site.contact.enquiryTypes.map((t) => (
-            <option key={t} value={t} className="bg-ink text-white">
-              {t}
+        <select id="service" className={fieldClass} {...register("service")}>
+          {site.contact.services.map((s) => (
+            <option key={s} value={s} className="bg-ink text-white">
+              {s}
             </option>
           ))}
         </select>
@@ -139,7 +147,7 @@ export function ContactForm() {
         className="inline-flex w-full items-center justify-center gap-2 bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-accent-bright disabled:cursor-not-allowed disabled:opacity-60"
       >
         <Send className="h-4 w-4" strokeWidth={1.75} />
-        {isSubmitting ? "Sending…" : "Submit Enquiry"}
+        {isSubmitting ? "Sending…" : "Send enquiry"}
       </button>
 
       <p className="text-[11px] italic text-white/55">

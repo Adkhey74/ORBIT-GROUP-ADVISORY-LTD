@@ -48,12 +48,12 @@ export function EuropeMap() {
             <Geography
               key={geo.rsmKey}
               geography={geo}
-              fill="rgba(38,38,44,0.95)"
-              stroke="rgba(100,100,116,0.28)"
-              strokeWidth={0.5}
+              fill="#26232f"
+              stroke="rgba(167,139,250,0.35)"
+              strokeWidth={0.6}
               style={{
                 default: { outline: "none" },
-                hover: { outline: "none", fill: "rgba(48,44,60,0.95)" },
+                hover: { outline: "none", fill: "#322d42" },
                 pressed: { outline: "none" },
               }}
             />

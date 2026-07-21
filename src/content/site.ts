@@ -45,13 +45,14 @@ export const site = {
 
   hero: {
     eyebrow: "Executive Protection & Mobility",
-    titleLead: "Trusted European Security",
+    titleLead: "Trusted Security",
     titleEmphasis: "& Mobility Partner.",
     subtitle:
-      "Orbit Group is a trusted European security and mobility partner providing bespoke solutions for family offices, principals and corporate executives — delivered with discretion and operational precision.",
+      "Orbit Group is a trusted security and mobility partner providing bespoke solutions for family offices, principals and corporate executives — delivered with discretion and operational precision.",
     ctaPrimary: "Submit a Confidential Enquiry",
     ctaSecondary: "Our Services",
-    image: "/images/5.webp",
+    image: "/images/heroimg.webp",
+    video: "/video/videohero4k.mp4",
     // Scrolling ticker coordinates
     ticker: [
       "LON 51.5074° N / 0.1278° W",
@@ -68,7 +69,7 @@ export const site = {
     titleLead: "Independent",
     titleEmphasis: "by design.",
     paragraphs: [
-      "Orbit Group is an independent executive security consultancy supporting family offices, private offices, corporate security teams and executive leadership across the UK and Europe.",
+      "Orbit Group is an independent private security consultancy — close protection, executive protection and secure mobility — supporting family offices, private offices, corporate security teams and executive leadership across the UK and Europe.",
       "We provide discreet security advisory, executive mobility and operational coordination through a deliberately selective model — from secure ground transportation and executive drivers to residential security and trusted local partners.",
       "Rather than operating as a traditional security company, we act as a trusted extension of the private office — coordinating people, logistics and security with consistency, discretion and direct senior oversight.",
       "Our approach is built on operational discipline, long-term relationships and the belief that the best security is measured not by its visibility, but by the confidence it provides.",
@@ -92,7 +93,7 @@ export const site = {
         title: "Executive Protection",
         tagline: "Protecting people without disrupting their lifestyle.",
         intro:
-          "Discreet, operationally trained close protection built around the specific threat profile — not a generic template.",
+          "Discreet, operationally trained close protection in Paris, London and across Europe — built around the specific threat profile, not a generic template.",
         capabilities: [
           "Close protection teams",
           "Risk assessment & risk management",
@@ -109,7 +110,7 @@ export const site = {
         title: "Executive Chauffeur",
         tagline: "More than transportation — secure, VIP-grade mobility.",
         intro:
-          "Vetted, protectively-trained security drivers and executive chauffeurs combining executive-level service with close protection awareness. Every journey is a secure transportation operation conducted without friction.",
+          "Vetted, protectively-trained security drivers and executive chauffeurs in London and across Europe, combining executive-level service with close protection awareness. Every journey is a secure transportation operation conducted without friction.",
         capabilities: [
           "VIP secure transportation",
           "Protective & defensive driving",
@@ -127,7 +128,7 @@ export const site = {
         title: "Residential Security",
         tagline: "Securing homes, estates and private residences.",
         intro:
-          "End-to-end assessment and implementation for private residences, estates and seasonal properties — protecting without disrupting the private life within.",
+          "End-to-end residential security in London and across Europe — assessment and implementation for private residences, estates and seasonal properties, protecting without disrupting the private life within.",
         capabilities: [
           "Residential security reviews",
           "Estate & access control coordination",
@@ -152,7 +153,8 @@ export const site = {
           "Crew vetting",
           "Anti-paparazzi & counter-surveillance",
         ],
-        images: ["/images/7.webp", "/images/8.webp", "/images/10.webp"],
+        // 7 = jet + van, 9 = security team / yacht.
+        images: ["/images/7.webp", "/images/9.webp"],
       },
     ] as Service[],
   },
@@ -198,23 +200,19 @@ export const site = {
     ],
   },
 
-  founder: {
-    label: "Founder",
-    titleLead: "Founder-led,",
-    titleEmphasis: "by principle.",
-    profile: {
-      name: "Franck Milla",
-      role: "Managing Director",
-      bio: "Orbit Group was founded by Franck Milla following a career spanning French Special Forces, French Law Enforcement, Diplomatic Protection and Executive Protection for family offices and ultra-high-net-worth principals across Europe.",
-      image: "/images/6.webp",
-    },
-    credentials: [
-      "French Special Forces",
-      "Law Enforcement",
-      "Diplomatic Protection",
-      "Executive Protection",
-      "Paris 2024 Olympic Games",
-      "Superyacht Support (96M)",
+  experience: {
+    label: "Selected Experience",
+    titleLead: "Experience built in",
+    titleEmphasis: "demanding environments.",
+    intro:
+      "Orbit Group's standards are shaped by more than 15 years of experience across French Special Forces, law enforcement, diplomatic protection and private security. This background includes supporting family offices and private principals across Europe through executive protection, secure mobility, international travel, major events, private residences, superyachts and aviation environments.",
+    // NOTE: images are interim stand-ins reusing existing photos — to be replaced
+    // with the client's dedicated "sober" images when supplied.
+    blocks: [
+      { title: "Diplomatic Protection", image: "/images/4.webp" },
+      { title: "Private Clients — Top 50 Forbes", image: "/images/1.webp" },
+      { title: "International Operations", image: "/images/11.webp" },
+      { title: "Superyacht & Aviation", image: "/images/10.webp" },
     ],
   },
 
@@ -261,15 +259,21 @@ export const site = {
 
   contact: {
     label: "Contact",
-    titleLead: "Submit a",
-    titleEmphasis: "confidential enquiry.",
+    titleLead: "Discuss your",
+    titleEmphasis: "requirements.",
     intro:
-      "All enquiries are treated in strict confidence. A member of the team will respond within one business day.",
-    enquiryTypes: [
+      "Every enquiry is handled personally and in strict confidence.",
+    responseTime: "Response within 24 hours",
+    capabilityBrief: {
+      label: "Download Capability Brief (PDF)",
+      href: "/orbit-capability-brief.pdf",
+    },
+    services: [
       "Executive Protection",
       "Executive Chauffeur",
       "Residential Security",
-      "Superyacht Security",
+      "Superyacht & Aviation Security",
+      "Family Office Security",
       "Other",
     ],
   },
