@@ -206,13 +206,11 @@ export const site = {
     titleEmphasis: "demanding environments.",
     intro:
       "Orbit Group's standards are shaped by more than 15 years of experience across French Special Forces, law enforcement, diplomatic protection and private security. This background includes supporting family offices and private principals across Europe through executive protection, secure mobility, international travel, major events, private residences, superyachts and aviation environments.",
-    // NOTE: images are interim stand-ins reusing existing photos — to be replaced
-    // with the client's dedicated "sober" images when supplied.
     blocks: [
-      { title: "Diplomatic Protection", image: "/images/4.webp" },
-      { title: "Private Clients — Top 50 Forbes", image: "/images/1.webp" },
-      { title: "International Operations", image: "/images/11.webp" },
-      { title: "Superyacht & Aviation", image: "/images/10.webp" },
+      { title: "Diplomatic Protection", image: "/images/experience-diplomatic.jpeg" },
+      { title: "Private Clients — Top 50 Forbes", image: "/images/experience-private-clients.jpeg" },
+      { title: "International Operations", image: "/images/experience-aviation.jpeg" },
+      { title: "Superyacht & Aviation", image: "/images/experience-superyacht.jpeg" },
     ],
   },
 
