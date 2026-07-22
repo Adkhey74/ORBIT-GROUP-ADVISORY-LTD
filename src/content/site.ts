@@ -31,6 +31,9 @@ export const site = {
     website: "orbitgroupsecurity.com",
     phone: "+33 6 37 77 61 32",
     principalOffice: "95 Wilton Road, London",
+    // Legal — from Companies House. Leave vatNumber empty if not VAT registered.
+    registeredOffice: "95 Wilton Road, London, England, SW1V 1BZ",
+    vatNumber: "",
     tagline:
       "Strategic security advisory, executive mobility and operational coordination for private clients across Europe.",
   },

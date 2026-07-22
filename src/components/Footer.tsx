@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Wordmark } from "./ui/Wordmark";
 
@@ -18,6 +19,9 @@ export function Footer() {
             <Wordmark size="md" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
               {footer.tagline}
+            </p>
+            <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-white/45">
+              {footer.note}
             </p>
           </div>
 
@@ -62,14 +66,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/55">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-white/45">
             © {year} {company.legalName} · Registered in {company.registeredIn} · Company
             No. {company.registrationNumber}
           </span>
-          <span className="text-[11px] uppercase tracking-[0.12em] text-white/55">
-            {footer.note}
-          </span>
+          <nav className="flex items-center gap-4 text-[11px] uppercase tracking-[0.12em] text-white/55">
+            <Link href="/privacy" className="transition-colors hover:text-white">
+              Privacy Policy
+            </Link>
+            <span aria-hidden className="text-white/20">·</span>
+            <Link href="/legal" className="transition-colors hover:text-white">
+              Legal Notice
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
