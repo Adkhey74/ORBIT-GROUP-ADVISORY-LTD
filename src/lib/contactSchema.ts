@@ -15,8 +15,6 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Please include a short message.")
     .max(5000, "Message is too long."),
-  /** Honeypot — must remain empty. */
-  website: z.string().max(0).optional().or(z.literal("")),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

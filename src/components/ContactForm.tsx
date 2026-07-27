@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle2 } from "lucide-react";
 import { site } from "@/content/site";
@@ -28,6 +28,23 @@ export function ContactForm() {
     defaultValues: { service: site.contact.services[0] },
   });
 
+  /** Fields that render their own message under the input. */
+  const inlineErrorFields = ["fullName", "email", "message"];
+
+  /**
+   * Validation can fail on fields with no inline error UI (the optional
+   * max-lengths). Without this, the click would do nothing at all — surface it.
+   */
+  function onInvalid(formErrors: FieldErrors<ContactInput>) {
+    const silent = Object.keys(formErrors).filter((k) => !inlineErrorFields.includes(k));
+    if (silent.length === 0) return;
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("[contact] submission blocked by:", silent, formErrors);
+    }
+    setServerError("Please check the form and try again.");
+    setStatus("error");
+  }
+
   async function onSubmit(values: ContactInput) {
     setServerError("");
     try {
@@ -37,6 +54,9 @@ export function ContactForm() {
         body: JSON.stringify(values),
       });
       const json = await res.json().catch(() => ({}));
+      if (process.env.NODE_ENV !== "production") {
+        console.info("[contact] server response:", json);
+      }
       if (!res.ok) {
         setServerError(json.error ?? "Something went wrong. Please try again.");
         setStatus("error");
@@ -73,15 +93,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3.5" noValidate>
-      {/* Honeypot */}
-      <div className="absolute left-[-9999px]" aria-hidden="true">
-        <label>
-          Website
-          <input type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
-        </label>
-      </div>
-
+    <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-3.5" noValidate>
       <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
           <label htmlFor="fullName" className={labelClass}>
