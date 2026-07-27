@@ -28,7 +28,7 @@ export const site = {
     registrationNumber: "17293435",
     registeredIn: "England & Wales",
     email: "orbitgroupsecurity@proton.me",
-    website: "orbitgroupsecurity.com",
+    website: "orbit-group.co.uk",
     phone: "+33 6 37 77 61 32",
     principalOffice: "95 Wilton Road, London",
     // Legal — from Companies House. Leave vatNumber empty if not VAT registered.
