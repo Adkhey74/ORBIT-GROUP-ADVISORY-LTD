@@ -97,7 +97,7 @@ export async function POST(request: Request) {
                           <table role="presentation" cellpadding="0" cellspacing="0">
                             <tr>
                               <td style="width:20px;height:2px;background-color:#7c3aed;font-size:0;line-height:0;">&nbsp;</td>
-                              <td style="padding-left:8px;color:#9a9aa4;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">New website enquiry</td>
+                              <td style="padding-left:8px;color:#9a9aa4;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:Arial,Helvetica,sans-serif;">Confidential enquiry</td>
                             </tr>
                           </table>
                         </td>
