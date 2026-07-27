@@ -55,7 +55,7 @@ export const site = {
     ctaPrimary: "Submit a Confidential Enquiry",
     ctaSecondary: "Our Services",
     image: "/images/heroimg.webp",
-    video: "/video/videohero4k.mp4",
+    video: "/video/newvideohero.mp4",
     // Scrolling ticker coordinates
     ticker: [
       "LON 51.5074° N / 0.1278° W",
