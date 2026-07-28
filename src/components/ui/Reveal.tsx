@@ -8,6 +8,8 @@ type RevealProps = {
   delay?: number;
   className?: string;
   as?: "div" | "li" | "article" | "section";
+  /** Optional anchor target, so a link can scroll straight to this block. */
+  id?: string;
 };
 
 type State = "idle" | "hidden" | "shown";
@@ -21,7 +23,7 @@ type State = "idle" | "hidden" | "shown";
  * Elements already in view (e.g. the hero) stay put, no flash.
  * No animation library — plain CSS transition + IntersectionObserver.
  */
-export function Reveal({ children, delay = 0, className = "", as = "div" }: RevealProps) {
+export function Reveal({ children, delay = 0, className = "", as = "div", id }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [state, setState] = useState<State>("idle");
 
@@ -66,6 +68,7 @@ export function Reveal({ children, delay = 0, className = "", as = "div" }: Reve
   return (
     <Tag
       ref={ref as never}
+      id={id}
       className={className}
       style={{
         opacity: hidden ? 0 : 1,

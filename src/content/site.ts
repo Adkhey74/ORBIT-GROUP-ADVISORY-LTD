@@ -275,8 +275,15 @@ export const site = {
       "Residential Security",
       "Superyacht & Aviation Security",
       "Family Office Security",
+      "Join the Network — Application",
       "Other",
     ],
+    /**
+     * Preselected when an applicant arrives via the "Apply to join" CTA (#apply),
+     * so applications land clearly labelled instead of looking like sales enquiries.
+     * Must match one of the entries above.
+     */
+    applicationService: "Join the Network — Application",
   },
 
   footer: {

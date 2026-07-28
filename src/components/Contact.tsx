@@ -100,8 +100,8 @@ export function Contact() {
           </dl>
         </Reveal>
 
-        {/* Right: form */}
-        <Reveal delay={100}>
+        {/* Right: form. #apply lands applicants straight on it (see JoinNetwork). */}
+        <Reveal delay={100} id="apply">
           <ContactForm />
         </Reveal>
       </div>

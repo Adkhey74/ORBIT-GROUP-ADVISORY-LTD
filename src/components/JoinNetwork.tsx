@@ -78,7 +78,7 @@ export function JoinNetwork() {
           <Reveal delay={160}>
             <div className="mt-9">
               <a
-                href="#contact"
+                href="#apply"
                 className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-accent-bright"
               >
                 {network.cta}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle2 } from "lucide-react";
@@ -22,11 +22,36 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
     defaultValues: { service: site.contact.services[0] },
   });
+
+  /**
+   * Applicants reach the form through the "Apply to join" CTA (#apply) —
+   * preselect the application option so their message arrives labelled as such
+   * rather than as a sales enquiry.
+   *
+   * Listening on click rather than hashchange is deliberate: Providers calls
+   * preventDefault() on every in-page anchor to drive Lenis smooth scroll, so
+   * the hash never changes on desktop. preventDefault does not stop
+   * propagation, so a document-level listener still sees the click.
+   */
+  useEffect(() => {
+    const selectApplication = () => setValue("service", site.contact.applicationService);
+
+    // Someone arriving on a shared /#apply link.
+    if (window.location.hash === "#apply") selectApplication();
+
+    const onClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.closest('a[href="#apply"]')) selectApplication();
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [setValue]);
 
   /** Fields that render their own message under the input. */
   const inlineErrorFields = ["fullName", "email", "message"];
