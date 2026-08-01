@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle2 } from "lucide-react";
@@ -178,9 +179,26 @@ export function ContactForm() {
         </p>
       ) : null}
 
+      {/*
+        Data-protection notice — placed above the button, not below it: it has to
+        be readable before the details are sent, not after. Tied to the button
+        with aria-describedby so it is announced on focus rather than skipped.
+      */}
+      <p id="privacy-notice" className="text-[11px] leading-relaxed text-white/60">
+        {site.contact.privacyNotice.body}{" "}
+        <Link
+          href={site.contact.privacyNotice.linkHref}
+          className="text-accent-label underline underline-offset-2 transition-colors hover:text-accent-bright"
+        >
+          {site.contact.privacyNotice.linkLabel}
+        </Link>
+        .
+      </p>
+
       <button
         type="submit"
         disabled={isSubmitting}
+        aria-describedby="privacy-notice"
         className="inline-flex w-full items-center justify-center gap-2 bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-accent-bright disabled:cursor-not-allowed disabled:opacity-60"
       >
         <Send className="h-4 w-4" strokeWidth={1.75} />

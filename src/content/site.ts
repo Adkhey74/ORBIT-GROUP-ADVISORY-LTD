@@ -284,6 +284,23 @@ export const site = {
      * Must match one of the entries above.
      */
     applicationService: "Join the Network — Application",
+
+    /**
+     * UK GDPR art. 13 notice, shown at the point of collection.
+     *
+     * Deliberately a notice and not a tick-box: /privacy declares our lawful
+     * basis as legitimate interests, so asking for consent would contradict our
+     * own policy — and consent, once given, could be withdrawn, leaving us
+     * unable to answer the enquiry we were asked to answer. Keep the two in
+     * step: if the lawful basis in /privacy ever changes to consent, this must
+     * become a required checkbox.
+     */
+    privacyNotice: {
+      body:
+        "By submitting this form you agree that the details above may be used to respond to your enquiry, in strict confidence. They are never sold or shared for third-party purposes, and are retained only as long as needed to handle your enquiry.",
+      linkLabel: "Privacy Policy",
+      linkHref: "/privacy",
+    },
   },
 
   footer: {
